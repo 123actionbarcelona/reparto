@@ -881,19 +881,22 @@ const allCharacters_data = [
 
                         if (hostName) {
                             doc.setFont('Helvetica', 'bold');
+                            doc.setFontSize(14);
                             doc.text(`Anfitrión/Host:`, pagePadding, pdfTopMargin);
-                            doc.setFont('Helvetica', 'normal');
-                            doc.text(hostName.replace("🎩","").trim(), pagePadding + 40, pdfTopMargin); 
+                            doc.text(hostName.trim(), pagePadding + 40, pdfTopMargin);
+                            doc.setFontSize(12);
                             pdfTopMargin += 8;
                         }
                         if (honoreeNames && honoreeNames.length > 0) {
                             doc.setFont('Helvetica', 'bold');
+                            doc.setFontSize(14);
                             doc.text(`Homenajeado(s)/a(s):`, pagePadding, pdfTopMargin);
-                            doc.setFont('Helvetica', 'normal');
-                            doc.text(honoreeNames.map(name => name.replace("🌟","").trim()).join(', '), pagePadding + 55, pdfTopMargin); 
+                            doc.text(honoreeNames.map(name => name.trim()).join(', '), pagePadding + 55, pdfTopMargin);
+                            doc.setFontSize(12);
                             pdfTopMargin += 8;
                         }
-                        pdfTopMargin += 5; 
+                        doc.setFont('Helvetica', 'normal');
+                        pdfTopMargin += 5;
 
 
                         let tableBody;
@@ -921,53 +924,49 @@ const allCharacters_data = [
 
                             tableBody = currentCharacters.map((char, index) => {
                                 const rawPlayerName = assignedPlayerMap.get(char.name);
-                                const playerNameClean = (rawPlayerName || "S/A").replace("🎩","").replace("🌟","").trim();
-                                const interpretationText = getGenderedInterpretationText(char.interpretationLevel, char.gender);
-                                const extroversionDisplay = interpretationText.toUpperCase();
+                                const playerNameForPrint = (rawPlayerName || "S/A").trim();
+                                const playerNameClean = playerNameForPrint.replace("🎩","").replace("🌟","").trim();
                                 let nameCellContent = { content: `${char.name}`, styles: { textColor: colorTextDark } };
-                                let playerCellStyles = { textColor: colorTextDark };
-                                const cleanHostName = hostName ? hostName.replace("🎩","").trim() : ""; 
+                                let playerCellStyles = { textColor: colorTextDark, fontStyle: 'bold' };
+                                const cleanHostName = hostName ? hostName.replace("🎩","").trim() : "";
                                 const cleanHonoreeNamesArray = honoreeNames.map(name => name.replace("🌟","").trim());
 
                                 if (playerNameClean === cleanHostName || cleanHonoreeNamesArray.includes(playerNameClean)) {
-                                    playerCellStyles.fontStyle = 'bold';
+                                    playerCellStyles.textColor = colorGoldDark;
                                 }
-                                if (playerNameClean === "S/A") { 
+                                if (playerNameClean === "S/A") {
                                     playerCellStyles.textColor = colorDanger;
                                     playerCellStyles.fontStyle = 'italic';
                                 }
-                                let playerCellContent = { content: playerNameClean, styles: playerCellStyles };
-                                const extroversionCellContent = { content: extroversionDisplay, styles: {textColor: colorTextDark} };
+                                let playerCellContent = { content: playerNameForPrint, styles: playerCellStyles };
 
                                 if (allImagesProcessedSuccessfully && imageDataUris[index]) {
                                     const imageCell = { image: imageDataUris[index], width: 15, height: 19.5, styles: {valign: 'middle', halign: 'center'} };
-                                    return [ imageCell, nameCellContent, playerCellContent, extroversionCellContent ];
+                                    return [ imageCell, nameCellContent, playerCellContent ];
                                 } else {
-                                    return [ nameCellContent, playerCellContent, extroversionCellContent ];
+                                    return [ nameCellContent, playerCellContent ];
                                 }
                             });
 
                             const head = allImagesProcessedSuccessfully ?
-                                [['Retrato', 'Sospechoso', 'Jugador/a', 'Extroversión']] :
-                                [['Sospechoso', 'Jugador/a', 'Extroversión']]; 
+                                [['Retrato', 'Sospechoso', 'Jugador/a']] :
+                                [['Sospechoso', 'Jugador/a']]; 
 
                             const columnStyles = allImagesProcessedSuccessfully ?
-                                { 
-                                    0: { cellWidth: 20, minCellHeight: 22, halign: 'center', valign: 'middle' }, 
-                                    1: { cellWidth: 'auto', fontStyle: 'bold' }, 
-                                    2: { cellWidth: 'auto', halign: 'left' },    
-                                    3: { cellWidth: 40, halign: 'left', fontStyle: 'italic' } 
-                                } : { 
-                                    0: { cellWidth: 'auto', fontStyle: 'bold' }, 
-                                    1: { cellWidth: 'auto', halign: 'left' },    
-                                    2: { cellWidth: 40, halign: 'left', fontStyle: 'italic' } 
+                                {
+                                    0: { cellWidth: 20, minCellHeight: 22, halign: 'center', valign: 'middle' },
+                                    1: { cellWidth: 'auto', fontStyle: 'bold' },
+                                    2: { cellWidth: 'auto', halign: 'left' }
+                                } : {
+                                    0: { cellWidth: 'auto', fontStyle: 'bold' },
+                                    1: { cellWidth: 'auto', halign: 'left' }
                                 };
 
                             doc.autoTable({
                                 head: head,
                                 body: tableBody,
                                 startY: pdfTopMargin,
-                                theme: 'grid', 
+                                theme: 'grid',
                                 headStyles: {
                                     fillColor: colorGoldPale, 
                                     textColor: colorTextDark,   
