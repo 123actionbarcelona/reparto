@@ -1057,28 +1057,6 @@ const allCharacters_data = [
         }
         document.addEventListener('DOMContentLoaded', () => initializeApp(allCharacters_data, packs_data));
         
-        // Máquina de escribir
-        const textoIntro = "🕵️‍♂️ Archivo Confidencial: Caso Collins";
-        let i = 0; 
-        const speed = 75;
-
-        function typeWriter() {
-          const el = document.getElementById("typewriter-title");
-          if (el && i < textoIntro.length) {
-            el.textContent += textoIntro.charAt(i);
-            i++;
-            setTimeout(typeWriter, speed);
-          }
-        }
-
-        window.addEventListener("load", () => {
-          const titleElement = document.getElementById("typewriter-title");
-          if (titleElement) {
-            titleElement.textContent = ''; // Vaciar el contenido inicial del H1
-            i = 0; // Asegurar que el contador de la máquina de escribir se reinicia
-            typeWriter(); // Iniciar la animación
-          }
-        });
 
         // Validación
         function validarClave() {
