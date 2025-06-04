@@ -8,19 +8,13 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Lora:wght@400;700&amp;family=Open+Sans:wght@300;400;600&amp;family=Special+Elite&amp;display=swap" rel="stylesheet"/>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" defer></script>
     <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
   <!-- INTRO DETECTIVESCA -->
   <div id="intro-detective">
-    <audio id="ambiente" autoplay loop>
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3d43955b19.mp3?filename=spy-mystery-113219.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="acceso-audio">
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/09/audio_69b5dcb88b.mp3?filename=secret-password-112462.mp3" type="audio/mpeg">
-    </audio>
     <h1 id="typewriter-title">🕵️‍♂️ Archivo Confidencial: Caso Collins</h1>
     <div class="intro-texto">
       <i>"Archivo confidencial del caso Collins. No abrir sin autorización."</i><br><br>
@@ -47,10 +41,11 @@
         <p class="case-intro-text" style="text-align: left; margin-bottom: 10px;">
             <i class="fas fa-user-secret" style="margin-right:8px;"></i><strong>🕵️ INFORME INICIAL:</strong>
         </p>
-        
-        <p class="typewriter-line" id="intro-line-1" style="margin-bottom: 5px;">Ha ocurrido un crimen⚰️ en la <strong>Mansión Collins</strong>.</p>
-        
-        <p class="typewriter-line typewriter-delay" id="intro-line-2">Es hora de reunir a los implicados. Indica el número de sospechosos e introduce los nombres para abrir el caso.</p>
+
+        <div id="initial-report" class="intro-report">
+            <p class="typewriter-line" id="intro-line-1" style="margin-bottom: 5px;">Ha ocurrido un crimen⚰️ en la <strong>Mansión Collins</strong>.</p>
+            <p class="typewriter-line typewriter-delay" id="intro-line-2">Es hora de reunir a los implicados. Indica el número de sospechosos e introduce los nombres para abrir el caso.</p>
+        </div>
         
         <div class="setup-control-group" style="margin-bottom: 15px;">
             <label for="host-name-input">Tu Nombre (Anfitrión/Host):</label>

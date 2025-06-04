@@ -608,7 +608,7 @@ const allCharacters_data = [
                     frame.dataset.charnameForMandatory = character.name;
                     const charId = character.name.replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase();
                     const imageClass = `character-portrait-image ${character.preferCenterImage ? 'img-position-center' : ''}`;
-                    const imageHtml = character.imageUrl ? `<img src="${character.imageUrl}" alt="${character.name}" class="${imageClass}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : '';
+                    const imageHtml = character.imageUrl ? `<img src="${character.imageUrl}" alt="${character.name}" class="${imageClass}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : '';
                     const placeholderHtml = `<div class="character-portrait-image-placeholder" style="${character.imageUrl ? 'display:none;' : 'display:flex;' }"><i class="fas fa-user-secret fa-3x"></i><p>Retrato</p></div>`;
                     const shareButtonHtml = `
 <div class="character-card-actions">
@@ -1085,12 +1085,8 @@ const allCharacters_data = [
           const clave = document.getElementById('clave')?.value?.trim().toLowerCase();
           const intro = document.getElementById('intro-detective');
           const error = document.getElementById('mensaje-error');
-          const ambiente = document.getElementById('ambiente');
-          const acceso = document.getElementById('acceso-audio');
 
           if (clave === 'cluedo') {
-            if(acceso) acceso.play();
-            if(ambiente) ambiente.pause();
             if(intro) {
                 intro.style.transition = "opacity 1.5s ease";
                 intro.style.opacity = "0";
