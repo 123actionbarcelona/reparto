@@ -881,19 +881,22 @@ const allCharacters_data = [
 
                         if (hostName) {
                             doc.setFont('Helvetica', 'bold');
+                            doc.setFontSize(14);
                             doc.text(`Anfitrión/Host:`, pagePadding, pdfTopMargin);
-                            doc.setFont('Helvetica', 'normal');
-                            doc.text(hostName.replace("🎩","").trim(), pagePadding + 40, pdfTopMargin); 
+                            doc.text(hostName.replace("🎩", "").trim(), pagePadding + 40, pdfTopMargin);
+                            doc.setFontSize(12);
                             pdfTopMargin += 8;
                         }
                         if (honoreeNames && honoreeNames.length > 0) {
                             doc.setFont('Helvetica', 'bold');
+                            doc.setFontSize(14);
                             doc.text(`Homenajeado(s)/a(s):`, pagePadding, pdfTopMargin);
-                            doc.setFont('Helvetica', 'normal');
-                            doc.text(honoreeNames.map(name => name.replace("🌟","").trim()).join(', '), pagePadding + 55, pdfTopMargin); 
+                            doc.text(honoreeNames.map(name => name.replace("🌟", "").trim()).join(', '), pagePadding + 55, pdfTopMargin);
+                            doc.setFontSize(12);
                             pdfTopMargin += 8;
                         }
-                        pdfTopMargin += 5; 
+                        doc.setFont('Helvetica', 'normal');
+                        pdfTopMargin += 5;
 
 
                         let tableBody;
