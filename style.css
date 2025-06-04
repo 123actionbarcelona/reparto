@@ -36,6 +36,25 @@
     color: var(--color-text-dark); /* Esta variable ya cambia en modo oscuro */
 }
 
+/* Bloque que contiene el informe inicial animado */
+#initial-report.intro-report {
+    border: 2px solid var(--color-gold-dark);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: rgba(255, 249, 229, 0.8);
+}
+
+#initial-report .typewriter-line {
+    font-size: 1.2em;
+}
+
+@media (max-width: 480px) {
+    #initial-report .typewriter-line {
+        font-size: 1.1em;
+    }
+}
+
 
 .container, .wrapper, #main {
     background-color: transparent !important;
