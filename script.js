@@ -883,7 +883,9 @@ const allCharacters_data = [
                             doc.setFont('Helvetica', 'bold');
                             doc.setFontSize(14);
                             doc.text(`Anfitrión/Host:`, pagePadding, pdfTopMargin);
+                            doc.setTextColor(colorGoldDark[0], colorGoldDark[1], colorGoldDark[2]);
                             doc.text(hostName.trim(), pagePadding + 40, pdfTopMargin);
+                            doc.setTextColor(colorTextDark[0], colorTextDark[1], colorTextDark[2]);
                             doc.setFontSize(12);
                             pdfTopMargin += 8;
                         }
@@ -891,7 +893,9 @@ const allCharacters_data = [
                             doc.setFont('Helvetica', 'bold');
                             doc.setFontSize(14);
                             doc.text(`Homenajeado(s)/a(s):`, pagePadding, pdfTopMargin);
+                            doc.setTextColor(colorGoldDark[0], colorGoldDark[1], colorGoldDark[2]);
                             doc.text(honoreeNames.map(name => name.trim()).join(', '), pagePadding + 55, pdfTopMargin);
+                            doc.setTextColor(colorTextDark[0], colorTextDark[1], colorTextDark[2]);
                             doc.setFontSize(12);
                             pdfTopMargin += 8;
                         }
