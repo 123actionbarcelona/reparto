@@ -1085,12 +1085,8 @@ const allCharacters_data = [
           const clave = document.getElementById('clave')?.value?.trim().toLowerCase();
           const intro = document.getElementById('intro-detective');
           const error = document.getElementById('mensaje-error');
-          const ambiente = document.getElementById('ambiente');
-          const acceso = document.getElementById('acceso-audio');
 
           if (clave === 'cluedo') {
-            if(acceso) acceso.play();
-            if(ambiente) ambiente.pause();
             if(intro) {
                 intro.style.transition = "opacity 1.5s ease";
                 intro.style.opacity = "0";
