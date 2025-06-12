@@ -1375,49 +1375,50 @@ function setupProgressiveFlow() {
     });
   }
 
-  const handleHonoreeChoice = hasHonoree => {
+  // ========================================================================
+// ✅ NUEVO BLOQUE MEJORADO (Implementa tu idea)
+// ========================================================================
+
+  const handleHonoreeChoice = (hasHonoree, buttonClicked) => {
+    // Primero, gestionamos la selección visual de los botones
+    [honYes, honNo].forEach(btn => btn.classList.remove('active'));
+    if(buttonClicked) buttonClicked.classList.add('active');
+
+    // Actualizamos el estado del checkbox invisible
     if (honChk) {
       honChk.checked = hasHonoree;
       honChk.dispatchEvent(new Event('change'));
     }
+    
+    // Mostramos el bloque 5 (Número de Jugadores)
     showBloque(5);
+    
+    // ¡Y AHORA LA MAGIA! Como tú sugeriste:
+    // Mostramos inmediatamente el bloque 6 (Nombres de los Jugadores)
+    showBloque(6);
   };
 
   if (honYes && honNo) {
-    honYes.addEventListener('click', () => handleHonoreeChoice(true));
-    honNo.addEventListener('click', () => handleHonoreeChoice(false));
+    honYes.addEventListener('click', () => handleHonoreeChoice(true, honYes));
+    honNo.addEventListener('click', () => handleHonoreeChoice(false, honNo));
   } else if (honChk) {
-    honChk.addEventListener('change', () => showBloque(5));
+    // Si solo existiera el checkbox, mantenemos un fallback
+    honChk.addEventListener('change', () => {
+        showBloque(5);
+        showBloque(6);
+    });
   }
 
- // ========================================================================
-// ✅ NUEVO BLOQUE MEJORADO
 // ========================================================================
 
   if (playerCountInput) {
-    // Creamos una función para reutilizar la lógica
-    const checkAndShowNamesBlock = () => {
-        const val = parseInt(playerCountInput.value);
-        const min = parseInt(playerCountInput.min);
-        const max = parseInt(playerCountInput.max);
-        // Si el valor es un número válido dentro del rango permitido...
-        if (!isNaN(val) && val >= min && val <= max) {
-            showBloque(6); // ...mostramos el bloque de los nombres.
-        }
-    };
-
-    // 1. Añadimos el listener para cuando el usuario cambie el valor
-    playerCountInput.addEventListener('input', checkAndShowNamesBlock);
-
-    // 2. Ejecutamos la función una vez al inicio
-    // Esto asegura que si el valor por defecto (8) es válido, el bloque se muestre inmediatamente.
-    const honoreeChoiceMade = honYes?.classList.contains('active') || honNo?.classList.contains('active') || (honChk && honChk.checked);
-    if (honoreeChoiceMade) {
-       checkAndShowNamesBlock();
-    }
+    playerCountInput.addEventListener('input', () => {
+      const val = parseInt(playerCountInput.value);
+      const min = parseInt(playerCountInput.min);
+      const max = parseInt(playerCountInput.max);
+      if (!isNaN(val) && val >= min && val <= max) showBloque(6);
+    });
   }
-
-// ========================================================================
 
   if (namesContainer) {
     namesContainer.addEventListener('input', () => {
