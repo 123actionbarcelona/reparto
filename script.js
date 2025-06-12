@@ -1390,14 +1390,34 @@ function setupProgressiveFlow() {
     honChk.addEventListener('change', () => showBloque(5));
   }
 
+ // ========================================================================
+// ✅ NUEVO BLOQUE MEJORADO
+// ========================================================================
+
   if (playerCountInput) {
-    playerCountInput.addEventListener('input', () => {
-      const val = parseInt(playerCountInput.value);
-      const min = parseInt(playerCountInput.min);
-      const max = parseInt(playerCountInput.max);
-      if (!isNaN(val) && val >= min && val <= max) showBloque(6);
-    });
+    // Creamos una función para reutilizar la lógica
+    const checkAndShowNamesBlock = () => {
+        const val = parseInt(playerCountInput.value);
+        const min = parseInt(playerCountInput.min);
+        const max = parseInt(playerCountInput.max);
+        // Si el valor es un número válido dentro del rango permitido...
+        if (!isNaN(val) && val >= min && val <= max) {
+            showBloque(6); // ...mostramos el bloque de los nombres.
+        }
+    };
+
+    // 1. Añadimos el listener para cuando el usuario cambie el valor
+    playerCountInput.addEventListener('input', checkAndShowNamesBlock);
+
+    // 2. Ejecutamos la función una vez al inicio
+    // Esto asegura que si el valor por defecto (8) es válido, el bloque se muestre inmediatamente.
+    const honoreeChoiceMade = honYes?.classList.contains('active') || honNo?.classList.contains('active') || (honChk && honChk.checked);
+    if (honoreeChoiceMade) {
+       checkAndShowNamesBlock();
+    }
   }
+
+// ========================================================================
 
   if (namesContainer) {
     namesContainer.addEventListener('input', () => {
