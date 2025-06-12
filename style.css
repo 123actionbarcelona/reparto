@@ -541,7 +541,24 @@ button .fas, button .fab { margin-right: 8px; }
     color: #ffffff;
     border-color: var(--color-gold-medium);
 }
+/* ... justo después de los estilos de :root.dark-mode .honoree-choice-btn:hover ... */
 
+.honoree-choice-btn.active {
+    background-color: var(--color-gold-dark);
+    color: var(--color-text-on-gold);
+    border-color: var(--color-gold-dark);
+    transform: translateY(0);
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.25);
+    cursor: default;
+}
+
+:root.dark-mode .honoree-choice-btn.active {
+    background-color: var(--color-gold-light);
+    color: var(--color-black-artdeco);
+    border-color: var(--color-gold-light);
+}
+
+/* ... aquí empiezan los estilos de #action-buttons-section ... */
 .honoree-choice-container { display: flex; gap: 10px; }
 #action-buttons-section {
     margin-bottom: 24px;
