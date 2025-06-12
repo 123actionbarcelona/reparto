@@ -240,7 +240,30 @@ input.player-name-box:focus,
     box-shadow: 0 0 0 3px rgba(192, 160, 98, .45), var(--box-shadow-inset), 0 2px 5px rgba(0,0,0,0.15);
     background-color: #33312c;
 }
+/* ======================================================================== */
+/* ✅ NUEVO: MEJORA DE CONTRASTE PARA EL INPUT DE FECHA EN DARK MODE         */
+/* ======================================================================== */
+:root.dark-mode input[type="date"].player-name-box {
+    /* 'Sugiere' al navegador que use su UI oscura para este control.
+       Esto afecta al calendario que se abre en móviles. */
+    color-scheme: dark;
+}
 
+/* Cuando la fecha está vacía, el texto tendrá un color más tenue, como un placeholder */
+input[type="date"].player-name-box:invalid {
+    color: var(--color-text-medium);
+}
+
+/* En navegadores WebKit (Chrome, Safari), podemos mejorar el icono del calendario */
+:root.dark-mode input[type="date"].player-name-box::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) brightness(1.1);
+}
+/* ======================================================================== */
+
+
+/* Controles de número de jugadores */
+.player-count-wrapper {
+/* ... el resto del código continúa ... */
 /* Controles de número de jugadores */
 .player-count-wrapper {
     display: flex;
