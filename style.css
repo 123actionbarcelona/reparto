@@ -253,7 +253,15 @@ input.player-name-box:focus,
 input[type="date"].player-name-box:invalid {
     color: var(--color-text-medium);
 }
-
+/* ======================================================================== */
+/* ✅ NUEVO: ESTILO PARA LA FECHA SELECCIONADA                              */
+/* ======================================================================== */
+input[type="date"].player-name-box:valid {
+    color: var(--color-gold-light); /* Un dorado más vivo y brillante */
+    font-weight: bold; /* Hacemos el texto más grueso */
+    text-shadow: 0px 0px 5px rgba(232, 216, 176, 0.2); /* Un sutil brillo dorado */
+}
+/* ======================================================================== */
 /* En navegadores WebKit (Chrome, Safari), podemos mejorar el icono del calendario */
 :root.dark-mode input[type="date"].player-name-box::-webkit-calendar-picker-indicator {
     filter: invert(0.8) brightness(1.1);
