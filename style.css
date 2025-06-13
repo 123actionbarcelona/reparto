@@ -1283,6 +1283,7 @@ button .fas, button .fab { margin-right: 8px; }
     border: 1px solid var(--color-gold-light);
     border-radius: var(--border-radius-soft);
     transition: background-color 0.5s ease, border-color 0.5s ease;
+    display: none;
 }
 :root.dark-mode #assignment-dashboard-section { background-color: #2f2d28; border-color: var(--color-gold-dark); }
 
