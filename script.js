@@ -1083,15 +1083,7 @@ function initializeApp(initialChars, initialPacks) {
                     return;
                 }
 
-                // CAPTURAMOS EL NUEVO CAMPO DE EMAIL
-                const hostEmailInput = document.getElementById('host-email-input');
-                const hostEmail = hostEmailInput ? hostEmailInput.value.trim() : '';
-
-                if (!hostEmail) {
-                    showToastNotification('Por favor, introduce tu email para recibir la copia.', 'error');
-                    hostEmailInput && hostEmailInput.focus();
-                    return;
-                }
+                // El envío por email se ha eliminado
 
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
@@ -1168,7 +1160,6 @@ function initializeApp(initialChars, initialPacks) {
 
                 yPos = drawInfoLine(yPos, "Nº de Sospechosos:", String(totalCards));
                 if (hostName) yPos = drawInfoLine(yPos, "Anfitrión:", hostName);
-                if (hostEmail) yPos = drawInfoLine(yPos, "Email Anfitrión:", hostEmail);
                 if (honoreeNames && honoreeNames.length > 0) yPos = drawInfoLine(yPos, "Homenajeado/a(s):", honoreeNames.join(', '));
 
                 yPos += 3;
@@ -1209,51 +1200,8 @@ function initializeApp(initialChars, initialPacks) {
                 const pdfName = `Panel de sospechosos - ${formattedDateForFilename}.pdf`;
                 const pdfFile = new File([pdfBlob], pdfName, { type: "application/pdf" });
 
-                // === ENVIAR A N8N VIA WEBHOOK ===
-                if (hostEmail) {
-                    try {
-                        showToastNotification('Enviando panel por email...', 'info');
-                        const beautifulHTML = generateBeautifulEmailHTML(sortedCharacters, formattedDateForFilename, hostName, honoreeNames, totalCards, assignedPlayerMap);
 
-                        // Preparamos los datos para el webhook
-                        const webhookData = {
-                            to: hostEmail,
-                            subject: `Panel Detectivesco - ${formattedDateForFilename}`,
-                            data: {
-                                event: {
-                                    date: formattedDateForFilename,
-                                    host: hostName || 'Organizador',
-                                    hostEmail: hostEmail,
-                                    honorees: honoreeNames,
-                                    totalPlayers: totalCards
-                                },
-                                assignments: sortedCharacters.map(char => ({
-                                    character: char.name,
-                                    player: assignedPlayerMap.get(char.name) || 'Sin asignar',
-                                    personality: getGenderedInterpretationText(char.interpretationLevel, char.gender).toUpperCase()
-                                })),
-                                emailHTML: beautifulHTML
-                            },
-                            timestamp: new Date().toISOString()
-                        };
-
-                        // Enviar al webhook de n8n
-                        const response = await fetch('https://n8n.srv815746.hstgr.cloud/webhook/panel-detectivesco', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(webhookData)
-                        });
-
-                        if (response.ok) {
-                            showToastNotification('✅ Panel enviado a tu email exitosamente', 'success', 4000);
-                        } else {
-                            throw new Error(`Error del servidor: ${response.status}`);
-                        }
-                    } catch (error) {
-                        console.error('Error enviando webhook:', error);
-                        showToastNotification('Error al enviar por email, pero puedes descargar el PDF', 'error', 5000);
-                    }
-                }
+                // Eliminado el envío automático por email
 
                 showToastNotification('PDF generado correctamente', 'success', 3000);
 
