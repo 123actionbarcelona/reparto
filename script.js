@@ -1062,10 +1062,20 @@ function initializeApp(initialChars, initialPacks) {
                     return;
                 }
 
+                // CAPTURAMOS EL NUEVO CAMPO DE EMAIL
+                const hostEmailInput = document.getElementById('host-email-input');
+                const hostEmail = hostEmailInput ? hostEmailInput.value.trim() : '';
+
+                if (!hostEmail) {
+                    showToastNotification('Por favor, introduce tu email para recibir la copia.', 'error');
+                    hostEmailInput && hostEmailInput.focus();
+                    return;
+                }
+
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
 
-                // === CÓDIGO DE GENERACIÓN DEL PDF (mantener todo igual) ===
+                // === CÓDIGO DE GENERACIÓN DEL PDF (se mantiene igual) ===
                 const page = { width: doc.internal.pageSize.getWidth(), height: doc.internal.pageSize.getHeight() };
                 const margin = 10;
                 const columnMargin = 5;
@@ -1099,7 +1109,6 @@ function initializeApp(initialChars, initialPacks) {
 
                 const totalCards = sortedCharacters.length;
 
-                // Dibujar el PDF
                 doc.setDrawColor(colors.gold);
                 doc.setLineWidth(1);
                 doc.rect(margin / 2, margin / 2, page.width - margin, page.height - margin);
@@ -1137,14 +1146,9 @@ function initializeApp(initialChars, initialPacks) {
                 }
 
                 yPos = drawInfoLine(yPos, "Nº de Sospechosos:", String(totalCards));
-
-                if (hostName) {
-                    yPos = drawInfoLine(yPos, "Anfitrión:", hostName);
-                }
-
-                if (honoreeNames && honoreeNames.length > 0) {
-                    yPos = drawInfoLine(yPos, "Homenajeado/a(s):", honoreeNames.join(', '));
-                }
+                if (hostName) yPos = drawInfoLine(yPos, "Anfitrión:", hostName);
+                if (hostEmail) yPos = drawInfoLine(yPos, "Email Anfitrión:", hostEmail);
+                if (honoreeNames && honoreeNames.length > 0) yPos = drawInfoLine(yPos, "Homenajeado/a(s):", honoreeNames.join(', '));
 
                 yPos += 3;
                 doc.setDrawColor(colors.light_gold);
@@ -1156,70 +1160,49 @@ function initializeApp(initialChars, initialPacks) {
                     const char = sortedCharacters[i];
                     const col = i % numColumns;
                     const row = Math.floor(i / numColumns);
-
                     const cardX = margin + (col * (card.width + columnMargin));
                     const cardY = yPos + (row * (card.height + cardMarginY));
-
                     doc.setFillColor(colors.bg);
                     doc.setDrawColor(colors.light_gold);
                     doc.setLineWidth(0.4);
                     doc.roundedRect(cardX, cardY, card.width, card.height, 2, 2, 'FD');
-
                     const textX = cardX + card.width / 2;
-
                     try { doc.setFont('Special Elite', 'normal'); } catch(e) { doc.setFont('Courier', 'normal'); }
                     doc.setFontSize(11);
                     doc.setTextColor(colors.dark);
                     doc.text(char.name.toUpperCase(), textX, cardY + 8, { align: 'center' });
-
                     doc.setDrawColor(colors.light_gold);
                     doc.setLineWidth(0.2);
                     doc.line(cardX + 4, cardY + 10.5, cardX + card.width - 4, cardY + 10.5);
-
                     const playerName = assignedPlayerMap.get(char.name) || 'S/A';
                     const cleanPlayerName = playerName.replace(/🎩|🌟/g, '').trim();
-
                     try { doc.setFont('Lora', 'bold'); } catch(e) { doc.setFont('Helvetica', 'bold'); }
                     doc.setFontSize(12);
                     doc.setTextColor(colors.gold);
                     doc.text(cleanPlayerName, textX, cardY + 18, { align: 'center' });
                 }
+                // === FIN CÓDIGO GENERACIÓN PDF ===
 
-                // === FIN DEL CÓDIGO DE GENERACIÓN DEL PDF ===
-
-                // Generar el PDF
                 const pdfBlob = doc.output('blob');
-                const formattedDate = getFormattedEventDate(eventDateValue);
-                const pdfName = `Panel de sospechos - ${formattedDate}.pdf`;
+                const formattedDateForFilename = getFormattedEventDate(eventDateValue) || "evento";
+                const pdfName = `Panel de sospechosos - ${formattedDateForFilename}.pdf`;
                 const pdfFile = new File([pdfBlob], pdfName, { type: "application/pdf" });
 
-                // Obtener el email del campo (si existe)
-                const recipientEmailInput = document.getElementById('recipient-email-input');
-                const recipientEmail = recipientEmailInput ? recipientEmailInput.value.trim() : '123actionbcn@gmail.com';
-
                 // === ENVIAR A N8N VIA WEBHOOK ===
-                if (recipientEmail) {
+                if (hostEmail) {
                     try {
                         showToastNotification('Enviando panel por email...', 'info');
+                        const beautifulHTML = generateBeautifulEmailHTML(sortedCharacters, formattedDateForFilename, hostName, honoreeNames, totalCards, assignedPlayerMap);
 
-                        // Generar el HTML bonito para el email
-                        const beautifulHTML = generateBeautifulEmailHTML(
-                            sortedCharacters,
-                            formattedDate,
-                            hostName,
-                            honoreeNames,
-                            totalCards,
-                            assignedPlayerMap
-                        );
-
-                        // Preparar los datos para el webhook
+                        // Preparamos los datos para el webhook
                         const webhookData = {
-                            to: recipientEmail,
-                            subject: `Panel Detectivesco - ${formattedDate}`,
+                            to: hostEmail,
+                            subject: `Panel Detectivesco - ${formattedDateForFilename}`,
                             data: {
                                 event: {
-                                    date: formattedDate,
+                                    date: formattedDateForFilename,
                                     host: hostName || 'Organizador',
+                                    hostEmail: hostEmail,
                                     honorees: honoreeNames,
                                     totalPlayers: totalCards
                                 },
@@ -1236,14 +1219,12 @@ function initializeApp(initialChars, initialPacks) {
                         // Enviar al webhook de n8n
                         const response = await fetch('https://n8n.srv815746.hstgr.cloud/webhook/panel-detectivesco', {
                             method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
+                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(webhookData)
                         });
 
                         if (response.ok) {
-                            showToastNotification('✅ Panel enviado por email exitosamente', 'success', 4000);
+                            showToastNotification('✅ Panel enviado a tu email exitosamente', 'success', 4000);
                         } else {
                             throw new Error(`Error del servidor: ${response.status}`);
                         }
@@ -1255,14 +1236,9 @@ function initializeApp(initialChars, initialPacks) {
 
                 showToastNotification('PDF generado correctamente', 'success', 3000);
 
-                // Continuar con la descarga/compartir normal
                 if (!isDesktop() && navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
                     try {
-                        await navigator.share({ 
-                            files: [pdfFile], 
-                            title: 'Panel Detectivesco - Intriga', 
-                            text: 'Aquí está el panel de asignaciones del juego de intriga.' 
-                        });
+                        await navigator.share({ files: [pdfFile], title: 'Panel Detectivesco - Intriga', text: 'Aquí está el panel de asignaciones del juego de intriga.' });
                     } catch (error) {
                         if (error.name !== 'AbortError') {
                             showToastNotification('Error al compartir. Iniciando descarga...', 'error');
