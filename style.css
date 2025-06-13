@@ -689,6 +689,49 @@ button .fas, button .fab { margin-right: 8px; }
     border-color: #2c1b17;
 }
 
+.boton-cerrar-caso {
+    font-family: 'Special Elite', monospace;
+    background: #7a2c2c;
+    color: var(--color-gold-pale, #faf3e0);
+    border: 2px solid #4c1a1a;
+    padding: 12px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    letter-spacing: 1.5px;
+    border-radius: 5px 20px 5px 20px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,255,255,0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.boton-cerrar-caso:hover {
+    background: #682424;
+    border-color: #3a1414;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.25), inset 0 1px 2px rgba(255,255,255,0.05);
+}
+
+.boton-cerrar-caso:active {
+    transform: translateY(0) scale(1);
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+:root.dark-mode .boton-cerrar-caso {
+    background: #5d2323;
+    border-color: #351313;
+    color: var(--color-gold-light, #e8d8b0);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3), inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+:root.dark-mode .boton-cerrar-caso:hover {
+    background: #4b1c1c;
+    border-color: #2a0e0e;
+}
+
 /* ============================================= */
 /* Estilos Guía del Detective                    */
 /* ============================================= */

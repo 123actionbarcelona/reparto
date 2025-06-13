@@ -127,6 +127,7 @@ function initializeApp(initialChars, initialPacks) {
             'back-to-setup-btn',
             'darkModeToggleBtn', 'darkModeToggleBtnSetup',
             'print-dashboard-btn',
+            'close-case-btn',
             'detective-guide-section', 'guide-header-tab',
             'completion-banner',
             'toast-notification', 'toast-message',
@@ -181,6 +182,7 @@ function initializeApp(initialChars, initialPacks) {
         let hostName = "";
         let honoreeNames = [];
         let eventDateValue = "";
+        let completionBannerShown = false;
 
         // La función addHonoreeInput se definirá en el Bloque 3, pero se llama desde aquí.
         if (domElements['has-honoree-checkbox']) {
@@ -340,6 +342,9 @@ function initializeApp(initialChars, initialPacks) {
             domElements['print-dashboard-btn'].addEventListener('click', async () => {
                 // ... La lógica de esta función es extensa y se moverá al Bloque 4
             });
+        }
+        if (domElements['close-case-btn']) {
+            domElements['close-case-btn'].addEventListener('click', handleBackToSetup);
         }
 
 // 👉👉 FIN BLOQUE 2: INICIALIZACIÓN Y GESTIÓN DEL ESTADO GLOBAL 👈👈
@@ -759,9 +764,17 @@ function initializeApp(initialChars, initialPacks) {
             const assignedCharacters = assignedPlayerMap.size;
 
             if (totalCharacters > 0 && assignedCharacters === totalCharacters) {
+                const wasVisible = banner.classList.contains('visible');
                 banner.classList.add('visible');
+                if (!wasVisible && !completionBannerShown) {
+                    completionBannerShown = true;
+                    setTimeout(() => {
+                        banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
+                }
             } else {
                 banner.classList.remove('visible');
+                completionBannerShown = false;
             }
         }
 
