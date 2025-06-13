@@ -1614,4 +1614,113 @@ button .fas, button .fab { margin-right: 8px; }
     { display: none !important; }
 }
 
+/* ============================================= */
+/* BLOQUE 5: BANNER DE FINALIZACIÓN Y ANIMACIONES*/
+/* ============================================= */
+
+#completion-banner {
+    background-color: var(--color-gold-pale);
+    border: 2px dashed var(--color-gold-dark);
+    border-radius: var(--border-radius-soft);
+    padding: 20px;
+    margin: 0 0 35px 0;
+    text-align: center;
+    overflow: hidden;
+    
+    /* Estado inicial: oculto */
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#completion-banner.visible {
+    /* Estado visible: aparece */
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 300px; /* Altura suficiente para el contenido */
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-bottom: 35px;
+    border-width: 2px;
+}
+
+#completion-banner h4 {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    color: var(--color-gold-dark);
+    margin: 0 0 15px 0;
+}
+
+#completion-banner h4 .fas {
+    margin-right: 10px;
+    transform: rotate(-15deg);
+}
+
+:root.dark-mode #completion-banner {
+    background-color: #2f2d28;
+    border-color: var(--color-gold-medium);
+}
+
+:root.dark-mode #completion-banner h4 {
+    color: var(--color-gold-light);
+}
+
+/* El botón dentro del banner empieza invisible y escalado */
+#completion-banner .boton-panel-pdf {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+/* Animación de entrada para el botón cuando el banner es visible */
+#completion-banner.visible .boton-panel-pdf {
+    animation: aparecerZoom 0.6s 0.3s ease-out forwards; /* 0.3s de retraso para que aparezca después del banner */
+}
+
+@keyframes aparecerZoom {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Efecto de brillo (shine) al pasar el ratón por encima del botón */
+.boton-panel-pdf {
+    position: relative;
+    overflow: hidden;
+}
+.boton-panel-pdf::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+.boton-panel-pdf:hover::after {
+    animation: shine 1s ease-in-out;
+}
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+/* Animación 'shake' para llamar la atención del botón */
+.boton-panel-pdf.attention {
+    animation: shake 0.6s ease-in-out 1.5s 1; /* Se ejecuta 1.5s después de aparecer */
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0) scale(1); }
+    20%, 60% { transform: translateX(-3px) scale(1); }
+    40%, 80% { transform: translateX(3px) scale(1); }
+}
+
 /* 👉👉 FIN BLOQUE 4: ESTILOS DE LA INTRO, ACCIONES Y RESPONSIVIDAD 👈👈 */

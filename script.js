@@ -126,11 +126,11 @@ function initializeApp(initialChars, initialPacks) {
             'assignment-table-body', 'female-characters-grid', 'male-characters-grid',
             'back-to-setup-btn',
             'darkModeToggleBtn', 'darkModeToggleBtnSetup',
-            'print-dashboard-btn',
+            'print-dashboard-btn', // <-- ID del botón de imprimir/guardar
+            'completion-banner', // <-- ID del nuevo banner
             'detective-guide-section', 'guide-header-tab',
-            'assignment-dashboard-buttons-container',
             'toast-notification', 'toast-message',
-            'host-name-input',
+            'host-name-input', 'host-email-input',
             'event-date-input',
             'has-honoree-checkbox', 'honorees-container', 'add-honoree-btn',
             'decrement-player-count', 'increment-player-count',
@@ -636,43 +636,44 @@ function initializeApp(initialChars, initialPacks) {
                     const currentSelectedPlayerName=this.value.trim();
                     const characterName=this.dataset.charname;
                     const previousPlayerForThisChar=assignedPlayerMap.get(characterName);
+                    
                     if(currentSelectedPlayerName){
                         let existingCharForThisPlayer=null;
-                        for(const[char,player]of assignedPlayerMap.entries()){if(player===currentSelectedPlayerName&&char!==characterName){existingCharForThisPlayer=char;break;}}
+                        for(const[char,player]of assignedPlayerMap.entries()){
+                            if(player===currentSelectedPlayerName&&char!==characterName){
+                                existingCharForThisPlayer=char;
+                                break;
+                            }
+                        }
                         if(existingCharForThisPlayer){
-                            showToastNotification(`"${currentSelectedPlayerName.replace("🎩","").replace("🌟","").trim()}" ya está asignado a "${existingCharForThisPlayer}".`, 'error');
+                            showToastNotification(`"${currentSelectedPlayerName.replace("🎩","" ).replace("🌟","" ).trim()}" ya está asignado a "${existingCharForThisPlayer}".`, 'error');
                             this.value=previousPlayerForThisChar||"";
                             this.classList.toggle('assigned',!!previousPlayerForThisChar);
                         } else {
                             assignedPlayerMap.set(characterName,currentSelectedPlayerName);
                             this.classList.add('assigned');
                         }
-                    }else{
+                    } else {
                         assignedPlayerMap.delete(characterName);
                         this.classList.remove('assigned');
                     }
                     updateAllPlayerSelects();
                     updateAssignmentDashboard();
+                    checkCompletionState(); // <--- LLAMADA A LA NUEVA LÓGICA
                 });
             }
             const cB=frame.querySelector('.copy-char-btn-frame');
             if(cB){cB.addEventListener('click', async ()=>{
                 const d=currentCharacters.find(c=>c.name===character.name);
-                const pA=(playerIO?(playerIO.value.trim()||"[Nombre del Jugador]"):"[Nombre del Jugador]").replace("🎩","").replace("🌟","").trim();
+                const pA=(playerIO?(playerIO.value.trim()||"[Nombre del Jugador]"):"[Nombre del Jugador]").replace("🎩","" ).replace("🌟","" ).trim();
                 if(d){
                     const txt = `¡Hola ${pA}!\n\nAquí tienes los detalles de tu sospechoso para el Cluedo en vivo “El Testamento de Mr. Collins”:\n\n🕵️ SOSPECHOSO: ${d.name}\n📜 DESCRIPCIÓN: ${d.description}\n\n🔗 Accede a tu ficha completa aquí: ${d.fichaLink||'N/A'}\n\n¡Recuerda que toda la información de la ficha es confidencial! 🤫`;
-
                     const isiPhone = /iPhone/i.test(navigator.userAgent);
                     if (isiPhone && navigator.share) {
                         try {
-                            await navigator.share({
-                                title: `Sospechoso: ${d.name}`,
-                                text: txt
-                            });
+                            await navigator.share({ title: `Sospechoso: ${d.name}`, text: txt });
                             showToastNotification('¡Detalles compartidos!', 'success');
-                        } catch (error) {
-                            console.error('Error al compartir:', error);
-                        }
+                        } catch (error) { console.error('Error al compartir:', error); }
                     } else {
                         openShareMenu(cB, txt, d.name);
                     }
@@ -748,6 +749,27 @@ function initializeApp(initialChars, initialPacks) {
                 const cP=r.insertCell();cP.innerHTML=displayPlayerName;
                 const cL=r.insertCell();cL.innerHTML=getExtroversionPill(char.interpretationLevel, char.gender);
             });
+        }
+
+        function checkCompletionState() {
+            const banner = domElements['completion-banner'];
+            const pdfBtn = domElements['print-dashboard-btn'];
+            if (!banner || !pdfBtn) return;
+
+            const totalCharacters = currentCharacters.length;
+            const assignedCharacters = assignedPlayerMap.size;
+
+            if (totalCharacters > 0 && assignedCharacters === totalCharacters) {
+                banner.classList.add('visible');
+
+                // Lógica para la animación 'shake'
+                pdfBtn.classList.remove('attention');
+                void pdfBtn.offsetWidth;
+                pdfBtn.classList.add('attention');
+
+            } else {
+                banner.classList.remove('visible');
+            }
         }
 
         // --- INICIO: Lógica de Popovers ---
