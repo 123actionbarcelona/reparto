@@ -123,7 +123,7 @@ function initializeApp(initialChars, initialPacks) {
         const domElementIds = [
             'player-count', 'player-names-grid-container', 'start-assignment',
             'player-count-error', 'setup-section', 'main-content-area',
-            'assignment-table-body', 'female-characters-grid', 'male-characters-grid',
+            'female-characters-grid', 'male-characters-grid',
             'back-to-setup-btn',
             'darkModeToggleBtn', 'darkModeToggleBtnSetup',
             'print-dashboard-btn',
