@@ -759,7 +759,13 @@ function initializeApp(initialChars, initialPacks) {
             const assignedCharacters = assignedPlayerMap.size;
 
             if (totalCharacters > 0 && assignedCharacters === totalCharacters) {
+                const alreadyVisible = banner.classList.contains('visible');
                 banner.classList.add('visible');
+                if (!alreadyVisible) {
+                    setTimeout(() => {
+                        banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 250);
+                }
             } else {
                 banner.classList.remove('visible');
             }
