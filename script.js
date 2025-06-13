@@ -192,6 +192,17 @@ function initializeApp(initialChars, initialPacks) {
                     if (honoreesContainer.children.length === 0) {
                         addHonoreeInput();
                     }
+                    // Añadir un pequeño retraso para asegurar que el DOM se asiente antes de hacer scroll/enfocar
+                    setTimeout(() => {
+                        const firstHonoreeInput = honoreesContainer.querySelector('.honoree-name-input');
+                        if (firstHonoreeInput) {
+                            firstHonoreeInput.focus();
+                            firstHonoreeInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } else if (addBtn && addBtn.style.display !== 'none') {
+                            addBtn.focus();
+                            addBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 100); // Pequeño retraso
                 } else {
                     addBtn.style.display = 'none';
                     honoreesContainer.innerHTML = '';
@@ -199,6 +210,7 @@ function initializeApp(initialChars, initialPacks) {
                 generatePlayerNameInputs(parseInt(domElements['player-count'].value),
                     Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value)
                 );
+                saveConfiguration();
             });
         }
         if (domElements['add-honoree-btn']) {
