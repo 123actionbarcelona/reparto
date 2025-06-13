@@ -977,12 +977,13 @@ function initializeApp(initialChars, initialPacks) {
             domElements['main-content-area'].classList.remove('visible-section');
             domElements['setup-section'].style.display = 'block';
 
-            // Reinitialize setup so player name inputs regenerate with preserved data
-            initializeFreshSetupState();
+            const existingNames = Array.from(domElements['player-names-grid-container']?.querySelectorAll('input.player-name-box'))
+                                        .map(input => input.value);
+            if (existingNames.length > 0) {
+                generatePlayerNameInputs(parseInt(domElements['player-count'].value), existingNames);
+            }
 
             domElements['setup-section'].scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            checkCompletionState();
 
             showToastNotification('Has vuelto a la configuración. Los datos se conservan.', 'info');
         }
@@ -1062,8 +1063,17 @@ function initializeApp(initialChars, initialPacks) {
             }
 
 
-            assignedPlayerMap.clear();
-            domElements['player-count-error'].style.display = 'none'; domElements['setup-section'].style.display = 'none';
+            const charNames = packs[playerCount];
+            const isSameCharacters = currentCharacters.length === charNames.length &&
+                                    currentCharacters.every((c, idx) => c.name === charNames[idx]);
+
+            if (!isSameCharacters) {
+                assignedPlayerMap.clear();
+                setupCharacterSelection(playerCount);
+            }
+
+            domElements['player-count-error'].style.display = 'none';
+            domElements['setup-section'].style.display = 'none';
             domElements['main-content-area'].classList.remove('hidden-section');
             domElements['main-content-area'].classList.add('visible-section');
             if (domElements['action-buttons-section']) {
@@ -1071,7 +1081,7 @@ function initializeApp(initialChars, initialPacks) {
             } else if (domElements['guide-header-tab']) {
                 domElements['guide-header-tab'].scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            setupCharacterSelection(playerCount);
+
             updateAllPlayerSelects();
             updateAssignmentDashboard();
             checkCompletionState();
