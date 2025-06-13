@@ -896,6 +896,7 @@ button .fas, button .fab { margin-right: 8px; }
     border-width: 0;
     
     transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: none; /* Oculta el banner de finalización */
 }
 
 #completion-banner.visible {
@@ -1283,6 +1284,7 @@ button .fas, button .fab { margin-right: 8px; }
     border: 1px solid var(--color-gold-light);
     border-radius: var(--border-radius-soft);
     transition: background-color 0.5s ease, border-color 0.5s ease;
+    display: none; /* Oculta el Panel Detectivesco */
 }
 :root.dark-mode #assignment-dashboard-section { background-color: #2f2d28; border-color: var(--color-gold-dark); }
 
