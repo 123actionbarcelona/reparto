@@ -1673,3 +1673,65 @@ button .fas, button .fab { margin-right: 8px; }
 }
 
 /* 👉👉 FIN BLOQUE 4: ESTILOS DE LA INTRO, ACCIONES Y RESPONSIVIDAD 👈👈 */
+
+/* ======================================================================== */
+/* ✅ ESTILOS MEJORADOS PARA EL BOTÓN DEL PANEL (VERSIÓN DEMO)              */
+/* ======================================================================== */
+
+/* Se modifica el botón para que su aparición sea controlada por animación */
+#completion-banner .boton-panel-pdf {
+    opacity: 0;
+    transform: scale(0.6);
+    /* La animación se define aparte */
+}
+
+/* Cuando el banner es visible, se dispara la animación del botón */
+#completion-banner.visible .boton-panel-pdf {
+    animation: aparecerZoom 0.6s 0.3s ease-out forwards; /* 0.3s de retraso */
+}
+
+@keyframes aparecerZoom {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Efecto de brillo (shine) al pasar el ratón por encima */
+.boton-panel-pdf {
+    position: relative; /* Necesario para el pseudo-elemento */
+    overflow: hidden;   /* Necesario para el efecto de brillo */
+}
+.boton-panel-pdf::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+.boton-panel-pdf:hover::after {
+    animation: shine 1s ease-in-out;
+}
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+/* Animación shake para llamar la atención */
+.boton-panel-pdf.attention {
+    animation: shake 0.6s ease-in-out 1.5s 1; /* Retraso de 1.5s */
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0) scale(1); }
+    20%, 60% { transform: translateX(-3px) scale(1); }
+    40%, 80% { transform: translateX(3px) scale(1); }
+}
+
