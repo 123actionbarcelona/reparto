@@ -561,6 +561,19 @@ button .fas, button .fab { margin-right: 8px; }
     border-color: var(--color-gold-light);
 }
 
+/* Separador para las secciones de Homenajeado y Nombres de Jugadores */
+.bloque.bloque-4,
+.bloque.bloque-6 {
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px dashed var(--color-gold-medium);
+}
+
+:root.dark-mode .bloque.bloque-4,
+:root.dark-mode .bloque.bloque-6 {
+    border-top-color: var(--color-gold-dark);
+}
+
 /* ... aquí empiezan los estilos de #action-buttons-section ... */
 .honoree-choice-container { display: flex; gap: 10px; }
 #action-buttons-section {
