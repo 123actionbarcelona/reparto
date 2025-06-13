@@ -123,7 +123,7 @@ function initializeApp(initialChars, initialPacks) {
         const domElementIds = [
             'player-count', 'player-names-grid-container', 'start-assignment',
             'player-count-error', 'setup-section', 'main-content-area',
-            'assignment-table-body', 'female-characters-grid', 'male-characters-grid',
+            'assignment-table-body', 'assignment-dashboard-section', 'female-characters-grid', 'male-characters-grid',
             'back-to-setup-btn',
             'darkModeToggleBtn', 'darkModeToggleBtnSetup',
             'print-dashboard-btn',
@@ -753,6 +753,7 @@ function initializeApp(initialChars, initialPacks) {
 
         function checkCompletionState() {
             const banner = domElements['completion-banner'];
+            const dashboard = domElements['assignment-dashboard-section'];
             if (!banner) return;
 
             const totalCharacters = currentCharacters.length;
@@ -761,6 +762,7 @@ function initializeApp(initialChars, initialPacks) {
             if (totalCharacters > 0 && assignedCharacters === totalCharacters) {
                 const alreadyVisible = banner.classList.contains('visible');
                 banner.classList.add('visible');
+                if (dashboard) dashboard.classList.remove('hidden-section');
                 if (!alreadyVisible) {
                     setTimeout(() => {
                         banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -768,6 +770,7 @@ function initializeApp(initialChars, initialPacks) {
                 }
             } else {
                 banner.classList.remove('visible');
+                if (dashboard) dashboard.classList.add('hidden-section');
             }
         }
 
@@ -979,6 +982,8 @@ function initializeApp(initialChars, initialPacks) {
 
             domElements['setup-section'].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+            checkCompletionState();
+
             showToastNotification('Has vuelto a la configuración. Los datos se conservan.', 'info');
         }
 
@@ -1069,6 +1074,7 @@ function initializeApp(initialChars, initialPacks) {
             setupCharacterSelection(playerCount);
             updateAllPlayerSelects();
             updateAssignmentDashboard();
+            checkCompletionState();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
