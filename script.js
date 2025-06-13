@@ -128,7 +128,6 @@ function initializeApp(initialChars, initialPacks) {
             'darkModeToggleBtn', 'darkModeToggleBtnSetup',
             'print-dashboard-btn',
             'detective-guide-section', 'guide-header-tab',
-            'assignment-dashboard-buttons-container',
             'completion-banner',
             'toast-notification', 'toast-message',
             'host-name-input',
