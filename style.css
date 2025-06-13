@@ -186,6 +186,7 @@ h1 .fa-search { color: var(--color-gold-medium); font-size: 0.8em; transition: c
 input.player-name-box,
 #setup-section input[type="number"],
 #setup-section input[type="text"],
+#setup-section input[type="email"],
 #setup-section input[type="date"].player-name-box {
     padding: 12px 18px;
     font-size: 1.05em;
