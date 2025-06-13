@@ -874,6 +874,63 @@ button .fas, button .fab { margin-right: 8px; }
 :root.dark-mode .character-column h3 span.deco-line { background-color: var(--color-gold-medium); }
 
 
+/* ============================================= */
+/* Estilos Banner de Finalización                */
+/* ============================================= */
+#completion-banner {
+    background-color: var(--color-gold-pale);
+    border: 2px dashed var(--color-gold-dark);
+    border-radius: var(--border-radius-soft);
+    padding: 20px;
+    margin: 0 0 35px 0;
+    text-align: center;
+    overflow: hidden;
+    
+    /* Estado inicial: oculto */
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#completion-banner.visible {
+    /* Estado visible: aparece */
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 300px; /* Altura suficiente para el contenido */
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-bottom: 35px;
+    border-width: 2px;
+}
+
+#completion-banner h4 {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    color: var(--color-gold-dark);
+    margin: 0 0 15px 0;
+}
+
+#completion-banner h4 .fas {
+    margin-right: 10px;
+    transform: rotate(-15deg);
+}
+
+:root.dark-mode #completion-banner {
+    background-color: #2f2d28;
+    border-color: var(--color-gold-medium);
+}
+
+:root.dark-mode #completion-banner h4 {
+    color: var(--color-gold-light);
+}
+
+
 /* 👉👉 FIN BLOQUE 2: ESTILOS DE LA INTERFAZ PRINCIPAL Y CONTENEDORES 👈👈 */
 
 
