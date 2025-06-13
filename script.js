@@ -1083,15 +1083,8 @@ function initializeApp(initialChars, initialPacks) {
                     return;
                 }
 
-                // CAPTURAMOS EL NUEVO CAMPO DE EMAIL
-                const hostEmailInput = document.getElementById('host-email-input');
-                const hostEmail = hostEmailInput ? hostEmailInput.value.trim() : '';
-
-                if (!hostEmail) {
-                    showToastNotification('Por favor, introduce tu email para recibir la copia.', 'error');
-                    hostEmailInput && hostEmailInput.focus();
-                    return;
-                }
+                // Campo de email eliminado: no se solicitará
+                const hostEmail = '';
 
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
