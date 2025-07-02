@@ -1,26 +1,26 @@
 // 👉👉 INICIO BLOQUE 1: CONFIGURACIÓN Y DATOS MAESTROS 👈👈
 
 const allCharacters_data = [
-    { name: "La Viuda", gender: "F", interpretationLevel: "Extrovertido", isBirthdayFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/the-widow/", description: "Elegante pero dramática, figura central tras la tragedia.", imageUrl: "Fotos_Personajes/VIUDA_WIDOW.webp" },
-    { name: "La Sobrina", gender: "F", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/SOBRINA/", description: "Joven aparentemente dulce y encantadora.", imageUrl: "Fotos_Personajes/LILLY_ROSE.webp" },
-    { name: "La Cocinera", gender: "F", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/coninera/", description: "De carácter fuerte, intenso y alegre", imageUrl: "Fotos_Personajes/COCINERA_COOK.webp" },
-    { name: "El Ama de Llaves", gender: "F", interpretationLevel: "Neutro", isBirthdayFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/amadellaves/", description: "Recta y eficiente, jefa del servicio", imageUrl: "Fotos_Personajes/AMA_DE_LLAVES.webp" },
-    { name: "La Doncella", gender: "F", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/ladoncella/", description: "Discreta y atenta, a menudo invisible pero siempre presente.", imageUrl: "Fotos_Personajes/DONCELLA_THE_MAID.webp" },
-    { name: "La Hermana", gender: "F", interpretationLevel: "Extrovertido", preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/hermana/", description: "Explosiva, con fuertes opiniones y actitud altiva.", imageUrl: "Fotos_Personajes/LA_HERMANA_THE_SISTER.webp" },
-    { name: "La Secretaria", gender: "F", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/secretaria/", description: "Organizada y comprometida con el sufragio femenino", imageUrl: "Fotos_Personajes/LA_SECRETARIA.webp" },
-    { name: "La Vecina 1", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
-    { name: "La Vecina 2", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
-    { name: "La Vecina 3", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
-    { name: "La Vecina 4", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
-    { name: "La Vecina 5", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
-    { name: "El Gestor", gender: "M", interpretationLevel: "Extrovertido", isBirthdayFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/gestoresp/", description: "Maneja la fortuna familiar y conoce sus entresijos.", imageUrl: "Fotos_Personajes/GESTOR_ACCOUNTANT.webp" },
-    { name: "El Hijastro", gender: "M", interpretationLevel: "Extrovertido", fichaLink: "https://123actionbarcelona.com/englishyes/jeremy/", description: "Un joven militar de honor muy masculino.", imageUrl: "Fotos_Personajes/HIJASTRO_STEPSON.webp" },
-    { name: "El Hermano", gender: "M", interpretationLevel: "Extrovertido", preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/henry/", description: "Carismático director de cine que solo piensa en el arte", imageUrl: "Fotos_Personajes/HERMANO_BROTHER.webp" },
-    { name: "El Doctor", gender: "M", interpretationLevel: "Neutro", isBirthdayFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/doctoresp/", description: "Muy profesional aunque va de enterado", imageUrl: "Fotos_Personajes/DOCTOR.webp" },
-    { name: "El Socio", gender: "M", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/petersocio/", description: "Hombre de negocios con alta autoestima", imageUrl: "Fotos_Personajes/SOCIO.webp" },
-    { name: "El Cuñado", gender: "M", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/cunadoroy/", description: "Excéntrico, divertido y derrochador", imageUrl: "Fotos_Personajes/BROTHER_IN_LAW.webp" },
-    { name: "El Gemelo 1", gender: "M", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/losgemelos/", description: "Pequeño genio de carácter algo particular", imageUrl: "Fotos_Personajes/GEMELOS_TWINS.webp" },
-    { name: "El Gemelo 2", gender: "M", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/losgemelos/", description: "Pequeño genio de carácter algo particular", imageUrl: "Fotos_Personajes/GEMELOS_TWINS.webp" }
+    { name: "La Viuda", gender: "F", interpretationLevel: "Extrovertido", isBirthdayFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/la-viuda/", description: "Elegante pero dramática, figura central tras la tragedia.", imageUrl: "Fotos_Personajes/VIUDA_WIDOW.webp" },
+    { name: "La Sobrina", gender: "F", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/la-sobrina/", description: "Joven aparentemente dulce y encantadora.", imageUrl: "Fotos_Personajes/LILLY_ROSE.webp" },
+    { name: "La Cocinera", gender: "F", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/la-cocinera/", description: "De carácter fuerte, intenso y alegre", imageUrl: "Fotos_Personajes/COCINERA_COOK.webp" },
+    { name: "El Ama de Llaves", gender: "F", interpretationLevel: "Neutro", isBirthdayFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-ama-de-llaves/", description: "Recta y eficiente, jefa del servicio", imageUrl: "Fotos_Personajes/AMA_DE_LLAVES.webp" },
+    { name: "La Doncella", gender: "F", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/la-doncella/", description: "Discreta y atenta, a menudo invisible pero siempre presente.", imageUrl: "Fotos_Personajes/DONCELLA_THE_MAID.webp" },
+    { name: "La Hermana", gender: "F", interpretationLevel: "Extrovertido", preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/la-hermana/", description: "Explosiva, con fuertes opiniones y actitud altiva.", imageUrl: "Fotos_Personajes/LA_HERMANA_THE_SISTER.webp" },
+    { name: "La Secretaria", gender: "F", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/la-secretaria/", description: "Organizada y comprometida con el sufragio femenino", imageUrl: "Fotos_Personajes/LA_SECRETARIA.webp" },
+    { name: "La Vecina 1", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/las-vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
+    { name: "La Vecina 2", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/las-vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
+    { name: "La Vecina 3", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/las-vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
+    { name: "La Vecina 4", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/las-vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
+    { name: "La Vecina 5", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/las-vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
+    { name: "El Gestor", gender: "M", interpretationLevel: "Extrovertido", isBirthdayFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-gestor/", description: "Maneja la fortuna familiar y conoce sus entresijos.", imageUrl: "Fotos_Personajes/GESTOR_ACCOUNTANT.webp" },
+    { name: "El Hijastro", gender: "M", interpretationLevel: "Extrovertido", fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-hijastro/", description: "Un joven militar de honor muy masculino.", imageUrl: "Fotos_Personajes/HIJASTRO_STEPSON.webp" },
+    { name: "El Hermano", gender: "M", interpretationLevel: "Extrovertido", preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-hermano/", description: "Carismático director de cine que solo piensa en el arte", imageUrl: "Fotos_Personajes/HERMANO_BROTHER.webp" },
+    { name: "El Doctor", gender: "M", interpretationLevel: "Neutro", isBirthdayFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-doctor/", description: "Muy profesional aunque va de enterado", imageUrl: "Fotos_Personajes/DOCTOR.webp" },
+    { name: "El Socio", gender: "M", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-socio/", description: "Hombre de negocios con alta autoestima", imageUrl: "Fotos_Personajes/SOCIO.webp" },
+    { name: "El Cuñado", gender: "M", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-cunado-roy/", description: "Excéntrico, divertido y derrochador", imageUrl: "Fotos_Personajes/BROTHER_IN_LAW.webp" },
+    { name: "El Gemelo 1", gender: "M", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/los-gemelos/", description: "Pequeño genio de carácter algo particular", imageUrl: "Fotos_Personajes/GEMELOS_TWINS.webp" },
+    { name: "El Gemelo 2", gender: "M", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/los-gemelos/", description: "Pequeño genio de carácter algo particular", imageUrl: "Fotos_Personajes/GEMELOS_TWINS.webp" }
 ];
 
 const packs_data = {
@@ -39,7 +39,6 @@ const packs_data = {
     20: ["La Viuda", "El Gestor", "La Sobrina", "El Hijastro", "La Cocinera", "El Hermano", "El Ama de Llaves", "El Doctor", "La Doncella", "El Socio", "La Hermana", "El Cuñado", "El Gemelo 1", "El Gemelo 2", "La Secretaria", "La Vecina 1", "La Vecina 2", "La Vecina 3", "La Vecina 4", "La Vecina 5"]
 };
 
-// Objeto de detalles para iconos individuales
 const specialIconDetails = {
     isBirthdayFriendly: {
         title: '🌟 <strong>Rol principal</strong>',
@@ -55,7 +54,6 @@ const specialIconDetails = {
     }
 };
 
-// Objeto de detalles para iconos combinados (ACTUALIZADO)
 const comboIconDetails = {
     birthday_senior: {
         title: '🌟👵🏻 <strong>Personaje versátil</strong>',
@@ -71,7 +69,7 @@ const comboIconDetails = {
 
 
 // 👉👉 A PARTIR DE AQUÍ PEGAR EL BLOQUE 2: INICIALIZACIÓN Y GESTIÓN DEL ESTADO GLOBAL 👈👈
-// �👉 INICIO BLOQUE 2: INICIALIZACIÓN Y GESTIÓN DEL ESTADO GLOBAL 👈👈
+// 👉 INICIO BLOQUE 2: INICIALIZACIÓN Y GESTIÓN DEL ESTADO GLOBAL 👈👈
 
 function getGenderedInterpretationText(level, gender) {
     const firstLetter = level ? level[0].toUpperCase() : "U";
@@ -80,7 +78,7 @@ function getGenderedInterpretationText(level, gender) {
     switch (firstLetter) {
         case "E": baseWord = "Extrovertid"; break;
         case "I": baseWord = "Introvertid"; break;
-        case "N": baseWord = "Camaleónic"; break;
+        case "N": baseWord = "Camaleónic";break;
         default:  return "Indefinido";
     }
     const suffix = (gender && gender.toUpperCase() === "F") ? "a" : "o";
@@ -123,10 +121,10 @@ function initializeApp(initialChars, initialPacks) {
         const domElementIds = [
             'player-count', 'player-names-grid-container', 'start-assignment',
             'player-count-error', 'setup-section', 'main-content-area',
-            'assignment-table-body', 'assignment-dashboard-section', 'female-characters-grid', 'male-characters-grid',
+            'female-characters-grid', 'male-characters-grid',
             'back-to-setup-btn',
             'darkModeToggleBtn', 'darkModeToggleBtnSetup',
-            'print-dashboard-btn',
+            'print-dashboard-btn-new', // <-- CAMBIO: Apuntamos al nuevo botón
             'detective-guide-section', 'guide-header-tab',
             'completion-banner',
             'toast-notification', 'toast-message',
@@ -135,13 +133,14 @@ function initializeApp(initialChars, initialPacks) {
             'has-honoree-checkbox', 'honorees-container', 'add-honoree-btn',
             'decrement-player-count', 'increment-player-count',
             'initial-report-target',
-            'intro-line-1-heading'
+            'intro-line-1-heading',
+            'assignment-progress'
         ];
         const domElements = {};
         let allElementsFound = true;
         domElementIds.forEach(id => {
             const element = document.getElementById(id);
-            if (!element && id !== 'guide-header-tab' && id !== 'load-config-btn') {
+            if (!element && id !== 'guide-header-tab' && id !== 'load-config-btn' && id !== 'print-dashboard-btn') {
                 console.error(`ERROR DOM: ID '${id}' NO encontrado.`);
                 allElementsFound = false;
             }
@@ -182,6 +181,138 @@ function initializeApp(initialChars, initialPacks) {
         let honoreeNames = [];
         let eventDateValue = "";
 
+        function getAllNameInputs() {
+            const inputs = [];
+            if (domElements['host-name-input']) inputs.push(domElements['host-name-input']);
+            if (domElements['honorees-container']) {
+                inputs.push(...domElements['honorees-container'].querySelectorAll('.honoree-name-input'));
+            }
+            if (domElements['player-names-grid-container']) {
+                inputs.push(...domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])'));
+            }
+            return inputs;
+        }
+
+
+        function normalizeName(str) {
+            return str
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase();
+        }
+
+        function isDuplicateName(value, currentInput) {
+            const valNorm = normalizeName(value);
+            const names = getAllNameInputs()
+                .filter(el => el !== currentInput)
+                .map(el => normalizeName(el.value.trim()))
+                .filter(n => n);
+            return names.includes(valNorm);
+        }
+
+        function setValidationMessage(input, message, type) {
+            const msgEl = input.nextElementSibling;
+            if (!msgEl || !msgEl.classList.contains('validation-message')) return;
+            msgEl.textContent = message || '';
+            msgEl.classList.remove('error', 'warning', 'success', 'show');
+            if (message) {
+                msgEl.classList.add(type, 'show');
+            }
+        }
+
+        function validateNameInput(input, silent = false, showToast = true) {
+            const val = input.value.trim();
+            let msg = '';
+            let type = '';
+            let valid = true;
+            if (!val) { msg = '⚠️ Campo requerido'; type = 'warning'; valid = false; }
+            else if (val.length < 2) { msg = '❌ Mínimo 2 caracteres'; type = 'error'; valid = false; }
+            else if (isDuplicateName(val, input)) { msg = '❌ Nombre ya usado'; type = 'error'; valid = false; }
+            if (!silent) {
+                setValidationMessage(input, msg, type);
+                if (!valid && showToast) {
+                    showToastNotification(msg, 'error');
+                }
+            }
+            if (!valid) {
+                input.classList.add('invalid');
+            } else {
+                input.classList.remove('invalid');
+            }
+            return valid;
+        }
+
+        function validateDateInput(input, silent = false, showToast = true) {
+            const val = input.value;
+            let msg = '';
+            let type = '';
+            let valid = true;
+            if (!val) { msg = '⚠️ Campo requerido'; type = 'warning'; valid = false; }
+            
+            if (!silent) {
+                setValidationMessage(input, msg, type);
+                if (!valid && msg && showToast) {
+                    showToastNotification(msg, 'error');
+                }
+            }
+            return valid;
+        }
+
+        function updateFormProgress() {
+            const fields = [];
+            if (domElements['event-date-input']) fields.push({el: domElements['event-date-input'], type: 'date'});
+            if (domElements['host-name-input']) fields.push({el: domElements['host-name-input'], type: 'name'});
+            if (domElements['has-honoree-checkbox'] && domElements['has-honoree-checkbox'].checked) {
+                const hInputs = domElements['honorees-container'].querySelectorAll('.honoree-name-input');
+                hInputs.forEach(el => fields.push({el, type: 'name'}));
+            }
+            if (domElements['player-names-grid-container']) {
+                const pInputs = domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])');
+                pInputs.forEach(el => fields.push({el, type: 'name'}));
+            }
+            const total = fields.length;
+            let validCount = 0;
+            fields.forEach(f => {
+                if (f.type === 'date') {
+                    if (validateDateInput(f.el, true)) validCount++; }
+                else {
+                    if (validateNameInput(f.el, true)) validCount++; }
+            });
+            const progressEl = document.getElementById('form-progress');
+            if (progressEl) {
+                const percent = total > 0 ? Math.round((validCount / total) * 100) : 0;
+                progressEl.querySelector('.progress-text').textContent = `${percent}%`;
+                progressEl.querySelector('.progress-bar-fill').style.width = `${percent}%`;
+                progressEl.style.display = 'block';
+            }
+            if (domElements['start-assignment']) {
+                domElements['start-assignment'].disabled = !(validCount === total && total > 0);
+            }
+        }
+
+        function attachNameValidation(input) {
+            if (!input) return;
+            const validate = () => {
+                const valid = validateNameInput(input, false, true);
+                updateFormProgress();
+                if (!valid) {
+                    input.classList.add('invalid');
+                } else {
+                    input.classList.remove('invalid');
+                }
+            };
+            input.addEventListener('blur', validate);
+        }
+
+        function attachDateValidation(input) {
+            if (!input) return;
+            const validate = () => {
+                validateDateInput(input, false, true);
+                updateFormProgress();
+            };
+            input.addEventListener('blur', validate);
+        }
+
         // La función addHonoreeInput se definirá en el Bloque 3, pero se llama desde aquí.
         if (domElements['has-honoree-checkbox']) {
             domElements['has-honoree-checkbox'].addEventListener('change', function() {
@@ -192,49 +323,52 @@ function initializeApp(initialChars, initialPacks) {
                     if (honoreesContainer.children.length === 0) {
                         addHonoreeInput();
                     }
-                    // Añadir un pequeño retraso para asegurar que el DOM se asiente antes de hacer scroll/enfocar
-                    setTimeout(() => {
-                        const firstHonoreeInput = honoreesContainer.querySelector('.honoree-name-input');
-                        if (firstHonoreeInput) {
-                            firstHonoreeInput.focus();
-                            firstHonoreeInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        } else if (addBtn && addBtn.style.display !== 'none') {
-                            addBtn.focus();
-                            addBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                    }, 100); // Pequeño retraso
                 } else {
                     addBtn.style.display = 'none';
                     honoreesContainer.innerHTML = '';
                 }
-                generatePlayerNameInputs(parseInt(domElements['player-count'].value),
-                    Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value)
+                generatePlayerNameInputs(
+                    parseInt(domElements['player-count'].value),
+                    Array.from(domElements['player-names-grid-container']
+                        .querySelectorAll('input.player-name-box:not([readonly])'))
+                        .map(ip => ip.value),
+                    false
                 );
-                saveConfiguration();
+                updateFormProgress();
             });
         }
         if (domElements['add-honoree-btn']) {
             domElements['add-honoree-btn'].addEventListener('click', () => {
                 addHonoreeInput();
+                updateFormProgress();
             });
         }
 
-         if (domElements['host-name-input']) {
+        if (domElements['host-name-input']) {
+            attachNameValidation(domElements['host-name-input']);
             domElements['host-name-input'].addEventListener('blur', () => {
-                 hostName = domElements['host-name-input'].value.trim();
-                 generatePlayerNameInputs(parseInt(domElements['player-count'].value),
-                    Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value)
-                 );
+                const isValid = validateNameInput(domElements['host-name-input']);
+                if (isValid) {
+                    hostName = domElements['host-name-input'].value.trim();
+                    generatePlayerNameInputs(
+                        parseInt(domElements['player-count'].value),
+                        Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value)
+                    );
+                }
+                updateFormProgress();
             });
             domElements['host-name-input'].addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
+                    const isValid = validateNameInput(domElements['host-name-input']);
+                    updateFormProgress();
+                    if (!isValid) return;
                     if (domElements['has-honoree-checkbox']) {
                         domElements['has-honoree-checkbox'].focus();
                     } else if (domElements['event-date-input']) {
                         domElements['event-date-input'].focus();
                     } else {
-                         const firstPlayerInput = domElements['player-names-grid-container'].querySelector('input.player-name-box:not([readonly])');
+                        const firstPlayerInput = domElements['player-names-grid-container'].querySelector('input.player-name-box:not([readonly])');
                         if (firstPlayerInput) {
                             firstPlayerInput.focus();
                         } else if (domElements['player-count']) {
@@ -245,12 +379,16 @@ function initializeApp(initialChars, initialPacks) {
             });
         }
         if (domElements['event-date-input']) {
+            attachDateValidation(domElements['event-date-input']);
             domElements['event-date-input'].addEventListener('change', () => {
                 eventDateValue = domElements['event-date-input'].value;
+                updateFormProgress();
             });
-             domElements['event-date-input'].addEventListener('keydown', function(event) {
+            domElements['event-date-input'].addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
+                    validateDateInput(domElements['event-date-input']);
+                    updateFormProgress();
                      const hasHonoreeChecked = domElements['has-honoree-checkbox'] ? domElements['has-honoree-checkbox'].checked : false;
                     let nextFocusElement = null;
 
@@ -296,7 +434,6 @@ function initializeApp(initialChars, initialPacks) {
             assignedPlayerMap.clear();
 
             if(domElements['host-name-input']) domElements['host-name-input'].value = hostName; else hostName = "";
-            if(domElements['event-date-input']) domElements['event-date-input'].value = eventDateValue; else eventDateValue = "";
 
             if(domElements['has-honoree-checkbox']) {
                 domElements['has-honoree-checkbox'].checked = honoreeNames.length > 0;
@@ -319,6 +456,7 @@ function initializeApp(initialChars, initialPacks) {
                                        .filter(name => name);
 
             generatePlayerNameInputs(parseInt(domElements['player-count'].value), existingNames);
+            updateFormProgress();
         }
 
         if(domElements['decrement-player-count'] && domElements['increment-player-count'] && domElements['player-count']) {
@@ -341,15 +479,15 @@ function initializeApp(initialChars, initialPacks) {
             });
         }
 
-        if(domElements['player-count']){domElements['player-count'].addEventListener('input',()=>{const c=parseInt(domElements['player-count'].value);const mn=parseInt(domElements['player-count'].min);const mx=parseInt(domElements['player-count'].max);if(c>=mn&&c<=mx){generatePlayerNameInputs(c, Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value));}else if(domElements['player-names-grid-container']&&domElements['player-names-grid-container'].innerHTML!==""&&(c<mn||c>mx)){if(c<mn&&c>=1)generatePlayerNameInputs(mn);else if(c>mx)generatePlayerNameInputs(mx);}});}
+        if(domElements['player-count']){domElements['player-count'].addEventListener('input',()=>{const c=parseInt(domElements['player-count'].value);const mn=parseInt(domElements['player-count'].min);const mx=parseInt(domElements['player-count'].max);if(c>=mn&&c<=mx){generatePlayerNameInputs(c, Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value));}else if(domElements['player-names-grid-container']&&domElements['player-names-grid-container'].innerHTML!==""&&(c<mn||c>mx)){if(c<mn&&c>=1)generatePlayerNameInputs(mn);else if(c>mx)generatePlayerNameInputs(mx);}updateFormProgress();});}
 
         // Las funciones de renderizado y acciones principales se definen en los siguientes bloques.
         // A continuación, se asocian los eventos a las funciones que se definirán más adelante.
 
         if(domElements['start-assignment'])domElements['start-assignment'].addEventListener('click',handleStartAssignment);
         if(domElements['back-to-setup-btn']) domElements['back-to-setup-btn'].addEventListener('click', handleBackToSetup);
-        if (domElements['print-dashboard-btn']) {
-            domElements['print-dashboard-btn'].addEventListener('click', async () => {
+        if (domElements['print-dashboard-btn-new']) { // <-- CAMBIO: Apuntamos al nuevo botón
+            domElements['print-dashboard-btn-new'].addEventListener('click', async () => {
                 // ... La lógica de esta función es extensa y se moverá al Bloque 4
             });
         }
@@ -370,14 +508,25 @@ function initializeApp(initialChars, initialPacks) {
             newInput.placeholder = `Nombre Homenajeado/a ${container.children.length + 1}`;
             newInput.className = 'player-name-box honoree-name-input';
             newInput.value = name;
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'validation-message';
+            attachNameValidation(newInput);
             newInput.addEventListener('blur', () => {
-                generatePlayerNameInputs(parseInt(domElements['player-count'].value),
-                    Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value)
-                );
+                const isValid = validateNameInput(newInput);
+                if (isValid) {
+                    generatePlayerNameInputs(
+                        parseInt(domElements['player-count'].value),
+                        Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value)
+                    );
+                }
+                updateFormProgress();
             });
             newInput.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
+                    const isValid = validateNameInput(newInput);
+                    updateFormProgress();
+                    if (!isValid) return;
                     const allHonoreeInputs = Array.from(container.querySelectorAll('.honoree-name-input'));
                     const currentIndex = allHonoreeInputs.indexOf(this);
                     if (currentIndex > -1 && currentIndex < allHonoreeInputs.length - 1) {
@@ -404,9 +553,11 @@ function initializeApp(initialChars, initialPacks) {
                 generatePlayerNameInputs(parseInt(domElements['player-count'].value),
                     Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])')).map(ip => ip.value)
                 );
+                updateFormProgress();
             };
 
             inputGroup.appendChild(newInput);
+            inputGroup.appendChild(msgDiv);
             inputGroup.appendChild(removeBtn);
             container.appendChild(inputGroup);
         }
@@ -442,7 +593,7 @@ function initializeApp(initialChars, initialPacks) {
             }, duration);
         }
 
-        function generatePlayerNameInputs(count, existingPlayerNamesFromGrid = []) {
+        function generatePlayerNameInputs(count, existingPlayerNamesFromGrid = [], shouldFocus = true) {
             if (!domElements['player-names-grid-container']) { return; }
 
             const currentHostNameVal = domElements['host-name-input'] ? domElements['host-name-input'].value.trim() : "";
@@ -493,6 +644,8 @@ function initializeApp(initialChars, initialPacks) {
                 const input = document.createElement('input');
                 input.type = 'text'; input.classList.add('player-name-box');
 
+                attachNameValidation(input);
+
                 if (editableNamesIndex < preservedEditableNames.length) {
                     input.value = preservedEditableNames[editableNamesIndex];
                     editableNamesIndex++;
@@ -507,10 +660,16 @@ function initializeApp(initialChars, initialPacks) {
                 input.setAttribute('aria-label', input.placeholder);
                 input.style.animationDelay = `${(i - playerBoxIndex) * 0.05}s`;
                 domElements['player-names-grid-container'].appendChild(input);
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'validation-message';
+                domElements['player-names-grid-container'].appendChild(msgDiv);
 
                 input.addEventListener('keydown', function(event) {
                     if (event.key === 'Enter') {
                         event.preventDefault();
+                        const isValid = validateNameInput(input);
+                        updateFormProgress();
+                        if (!isValid) return;
                         const allPlayerInputs = Array.from(domElements['player-names-grid-container'].querySelectorAll('input.player-name-box:not([readonly])'));
                         const currentIndex = allPlayerInputs.indexOf(this);
                         if (currentIndex > -1 && currentIndex < allPlayerInputs.length - 1) {
@@ -520,11 +679,15 @@ function initializeApp(initialChars, initialPacks) {
                         }
                     }
                 });
-                 input.addEventListener('blur', () => {}); // Se deja el listener vacío por si se reintroduce lógica
-                if (i === playerBoxIndex && !input.value) {
+                input.addEventListener('blur', () => {
+                    validateNameInput(input);
+                    updateFormProgress();
+                });
+                if (shouldFocus && i === playerBoxIndex && !input.value) {
                      setTimeout(() => input.focus(), 50);
                 }
             }
+            updateFormProgress();
         }
 
         function setupCharacterSelection(playerCount) {
@@ -632,7 +795,7 @@ function initializeApp(initialChars, initialPacks) {
 <div class="character-card-actions">
   <button class="copy-char-btn-frame">
     <img src="Fotos_Personajes/whatapp-logo.WEBP" alt="WhatsApp" />
-    Compartir por WhatsApp
+    Enviar personaje
   </button>
 </div>`;
             const nameHtml = `<h4>${character.name}</h4>`;
@@ -670,7 +833,6 @@ function initializeApp(initialChars, initialPacks) {
                         this.classList.remove('assigned');
                     }
                     updateAllPlayerSelects();
-                    updateAssignmentDashboard();
                     checkCompletionState(); // <--- LLAMADA A LA NUEVA LÓGICA
                 });
             }
@@ -729,62 +891,116 @@ function initializeApp(initialChars, initialPacks) {
             });
         }
 
-        function getRandomSmallAngle() {
-            const maxAngle = 5;
-            return (Math.random() * (maxAngle * 2)) - maxAngle;
-        }
 
-        function updateAssignmentDashboard() {
-            if(!domElements['assignment-table-body']){return;}domElements['assignment-table-body'].innerHTML='';if(currentCharacters.length===0)return;
-            currentCharacters.forEach(char=>{
-                const rawPlayerName = assignedPlayerMap.get(char.name);
-                const displayPlayerName = rawPlayerName ? rawPlayerName.replace("🎩"," (Anfitrión)").replace("🌟"," (Homenajeado)") : '<em>S/A</em>';
-
-                const r=domElements['assignment-table-body'].insertRow();const cI=r.insertCell();
-                if(char.imageUrl){
-                    const i=document.createElement('img');
-                    i.src=char.imageUrl;
-                    i.alt=char.name;
-                    i.style.transform = `rotate(${getRandomSmallAngle()}deg)`;
-                    i.onerror=function(){
-                        this.onerror=null;
-                        this.src='https://placehold.co/50x65/ccc/fff?text=X';
-                        this.alt=`${char.name} (imagen no disponible)`;
-                        this.style.transform = 'none';
-                    };
-                    cI.appendChild(i);
-                }else{
-                    cI.innerHTML='<i class="fas fa-image" style="font-size:24px;color:#ccc;"></i>';
-                }
-                const cN=r.insertCell();
-                cN.innerHTML=`${char.name}`;
-                const cP=r.insertCell();cP.innerHTML=displayPlayerName;
-                const cL=r.insertCell();cL.innerHTML=getExtroversionPill(char.interpretationLevel, char.gender);
-            });
-        }
-
+        // =========================================================
+        // === CAMBIO: NUEVAS FUNCIONES PARA EL BANNER DE ÉXITO ===
+        // =========================================================
         function checkCompletionState() {
             const banner = domElements['completion-banner'];
-            const dashboard = domElements['assignment-dashboard-section'];
             if (!banner) return;
 
             const totalCharacters = currentCharacters.length;
             const assignedCharacters = assignedPlayerMap.size;
 
+            updateAssignmentProgress(totalCharacters, assignedCharacters);
+    
             if (totalCharacters > 0 && assignedCharacters === totalCharacters) {
                 const alreadyVisible = banner.classList.contains('visible');
-                banner.classList.add('visible');
-                if (dashboard) dashboard.classList.remove('hidden-section');
                 if (!alreadyVisible) {
+                    // Solo ejecutar si no estaba ya visible
+                    populateAndShowCompletionBanner();
                     setTimeout(() => {
                         banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 250);
                 }
             } else {
                 banner.classList.remove('visible');
-                if (dashboard) dashboard.classList.add('hidden-section');
             }
         }
+
+        function updateAssignmentProgress(totalCharacters, assignedCharacters) {
+            const progressEl = domElements['assignment-progress'];
+            if (!progressEl) return;
+
+            const textEl = progressEl.querySelector('.progress-text');
+            const fillEl = progressEl.querySelector('.progress-bar-fill');
+
+            if (textEl) {
+                textEl.textContent = `${assignedCharacters} / ${totalCharacters}`;
+            }
+            if (fillEl) {
+                const percent = totalCharacters > 0 ? (assignedCharacters / totalCharacters) * 100 : 0;
+                fillEl.style.width = `${percent}%`;
+            }
+
+            if (assignedCharacters === totalCharacters && totalCharacters > 0) {
+                progressEl.style.display = 'none';
+            } else {
+                progressEl.style.display = totalCharacters > 0 ? 'block' : 'none';
+            }
+        }
+
+       function populateAndShowCompletionBanner() {
+           const banner = domElements['completion-banner'];
+           if (!banner) return;
+
+            const progressEl = domElements['assignment-progress'];
+            if (progressEl) {
+                progressEl.style.display = 'none';
+            }
+
+            // Poblar detalles del informe
+            document.getElementById('completion-host-name').textContent = hostName || 'No especificado';
+            document.getElementById('completion-event-date').textContent = getFormattedEventDate(eventDateValue) || 'Fecha no especificada';
+            document.getElementById('completion-suspect-count').textContent = `${currentCharacters.length} individuos`;
+    
+            const honoreesRow = document.getElementById('completion-honorees-row');
+            if (honoreeNames.length > 0) {
+                document.getElementById('completion-honoree-names').textContent = honoreeNames.join(', ');
+                honoreesRow.style.display = 'flex';
+            } else {
+                honoreesRow.style.display = 'none';
+            }
+    
+            // Generar tarjetas de evidencia
+            const evidenceCardsContainer = document.getElementById('completion-evidence-cards');
+            evidenceCardsContainer.innerHTML = ''; // Limpiar tarjetas anteriores
+    
+            currentCharacters.forEach(character => {
+                const player = assignedPlayerMap.get(character.name) || 'Sin asignar';
+                const cleanPlayerName = player.replace(/🎩|🌟/g, '').trim();
+    
+                const card = document.createElement('div');
+                card.className = 'evidence-card assigned'; // 'assigned' activa la cinta en CSS
+    
+                const personalityText = getGenderedInterpretationText(character.interpretationLevel, character.gender);
+                const emojiMap = {'Extrovertido': '🔥', 'Extrovertida': '🔥', 'Introvertido': '🙈', 'Introvertida': '🙈', 'Camaleónico': '🎭', 'Camaleónica': '🎭'};
+                const personalityEmoji = emojiMap[personalityText] || '❔';
+    
+                card.innerHTML = `
+                    <div class="evidence-card-content">
+                        <h4>${character.name}</h4>
+                        <p>Asignado a: ${cleanPlayerName}</p>
+                        <p style="font-size: 0.8em; margin-top: 5px;">${personalityEmoji} ${personalityText}</p>
+                    </div>
+                `;
+                evidenceCardsContainer.appendChild(card);
+            });
+    
+            // Activar la animación del banner
+            banner.classList.add('visible');
+            
+            // Reiniciar la animación del texto de máquina de escribir si existe
+            const typewriterEl = document.getElementById('completion-message');
+            if(typewriterEl) {
+                 typewriterEl.style.animation = 'none';
+                 void typewriterEl.offsetWidth; // Force reflow
+                 typewriterEl.style.animation = 'typing 2s steps(40, end) 1.8s both';
+            }
+        }
+        // =========================================================
+        // === FIN DE CAMBIO =======================================
+        // =========================================================
 
         // --- INICIO: Lógica de Popovers ---
         let activePopoverElements = null;
@@ -954,9 +1170,15 @@ function initializeApp(initialChars, initialPacks) {
             const menu = document.createElement('div');
             menu.className = 'share-menu';
             menu.innerHTML = `
-                <a href="https://wa.me/?text=${encodeURIComponent(txt)}" target="_blank">🟢 WhatsApp</a>
-                <button type="button" class="share-copy-option">📋 Copiar al portapapeles</button>
-                <a href="mailto:?subject=${encodeURIComponent('Tu personaje en el Cluedo: ' + name)}&body=${encodeURIComponent(txt)}">✉️ Enviar por email</a>
+                <a href="https://wa.me/?text=${encodeURIComponent(txt)}" target="_blank">
+                    <i class="fab fa-whatsapp share-menu-icon"></i>WhatsApp
+                </a>
+                <button type="button" class="share-copy-option">
+                    <i class="fas fa-copy share-menu-icon"></i>Copiar al portapapeles
+                </button>
+                <a href="mailto:?subject=${encodeURIComponent('Tu personaje en el Cluedo: ' + name)}&body=${encodeURIComponent(txt)}">
+                    <i class="fas fa-envelope share-menu-icon"></i>Enviar por email
+                </a>
             `;
             document.body.appendChild(menu);
             const rect = trigger.getBoundingClientRect();
@@ -989,13 +1211,38 @@ function initializeApp(initialChars, initialPacks) {
             domElements['main-content-area'].classList.remove('visible-section');
             domElements['setup-section'].style.display = 'block';
 
-            const existingNames = Array.from(domElements['player-names-grid-container']?.querySelectorAll('input.player-name-box'))
-                                        .map(input => input.value);
-            if (existingNames.length > 0) {
-                generatePlayerNameInputs(parseInt(domElements['player-count'].value), existingNames);
+            // Cancel any smooth scroll still in progress from the assignment view
+            window.scrollTo({ top: 0, behavior: 'auto' });
+
+            // Delay slightly so the layout settles before revealing fields again
+            setTimeout(() => {
+                // Ensure previously revealed blocks remain visible when returning
+                document.querySelectorAll('#setup-section .bloque').forEach(b => {
+                    if (b.classList.contains('hidden-section')) {
+                        b.classList.remove('hidden-section');
+                        b.classList.add('visible-section');
+                    }
+                });
+
+                // Restore previously entered host and date values
+                if (domElements['host-name-input']) {
+                    domElements['host-name-input'].value = hostName;
+                }
+
+                const existingNames = Array.from(domElements['player-names-grid-container']?.querySelectorAll('input.player-name-box'))
+                                            .map(input => input.value);
+                if (existingNames.length > 0) {
+                    generatePlayerNameInputs(parseInt(domElements['player-count'].value), existingNames);
+                }
+
+                domElements['setup-section'].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+
+            if(domElements['assignment-progress']){
+                domElements['assignment-progress'].style.display = 'none';
             }
 
-            domElements['setup-section'].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            updateFormProgress();
 
             showToastNotification('Has vuelto a la configuración. Los datos se conservan.', 'info');
         }
@@ -1003,6 +1250,9 @@ function initializeApp(initialChars, initialPacks) {
         function handleStartAssignment() {
             if (!domElements['player-count'] || !domElements['player-count-error'] || !domElements['main-content-area'] ||
                 !domElements['player-names-grid-container'] || !domElements['setup-section']) { return; }
+
+            const formProg = document.getElementById('form-progress');
+            if(formProg) formProg.style.display = 'none';
 
             hostName = domElements['host-name-input'] ? domElements['host-name-input'].value.trim() : "";
             eventDateValue = domElements['event-date-input'] ? domElements['event-date-input'].value : "";
@@ -1080,14 +1330,23 @@ function initializeApp(initialChars, initialPacks) {
                                     currentCharacters.every((c, idx) => c.name === charNames[idx]);
 
             if (!isSameCharacters) {
+                const previousAssignments = new Map(assignedPlayerMap);
                 assignedPlayerMap.clear();
                 setupCharacterSelection(playerCount);
+                charNames.forEach(name => {
+                    if (previousAssignments.has(name)) {
+                        assignedPlayerMap.set(name, previousAssignments.get(name));
+                    }
+                });
             }
 
             domElements['player-count-error'].style.display = 'none';
             domElements['setup-section'].style.display = 'none';
             domElements['main-content-area'].classList.remove('hidden-section');
             domElements['main-content-area'].classList.add('visible-section');
+            if(domElements['assignment-progress']){
+                domElements['assignment-progress'].style.display = 'block';
+            }
             if (domElements['action-buttons-section']) {
                  domElements['action-buttons-section'].scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else if (domElements['guide-header-tab']) {
@@ -1095,15 +1354,14 @@ function initializeApp(initialChars, initialPacks) {
             }
 
             updateAllPlayerSelects();
-            updateAssignmentDashboard();
             checkCompletionState();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
 
         // Se sobreescribe el listener del botón de imprimir para añadir la lógica completa
-        if (domElements['print-dashboard-btn']) {
-            domElements['print-dashboard-btn'].addEventListener('click', async () => {
+        if (domElements['print-dashboard-btn-new']) {
+            domElements['print-dashboard-btn-new'].addEventListener('click', async () => {
                 showToastNotification('Generando PDF artístico...', 'info', 6000);
 
                 if (typeof window.jspdf === 'undefined' || typeof window.jspdf.jsPDF === 'undefined') {
@@ -1312,6 +1570,31 @@ function initializeApp(initialChars, initialPacks) {
             }
         }
 
+        // --- CAMBIO: Lógica para el nuevo banner de finalización ---
+        const magnifier = document.getElementById('magnifier');
+        if (magnifier) {
+            document.addEventListener('mousemove', (e) => {
+                magnifier.style.left = e.clientX - 50 + 'px';
+                magnifier.style.top = e.clientY - 50 + 'px';
+            });
+
+            // Usamos delegación de eventos en un contenedor superior que exista siempre
+            const mainContent = document.getElementById('main-content-area');
+            if (mainContent) {
+                 mainContent.addEventListener('mouseover', (e) => {
+                    if (e.target.closest('.evidence-cards, .case-details')) {
+                        magnifier.classList.add('active');
+                    }
+                });
+                mainContent.addEventListener('mouseout', (e) => {
+                    if (e.target.closest('.evidence-cards, .case-details')) {
+                        magnifier.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+
     }catch(e){console.error("ASIGNADOR ERROR GRAL:",e,e.stack);const b=document.body;if(b){let d=document.getElementById('critical-error');if(!d){d=document.createElement('div');d.id='critical-error';d.style.cssText='display:block;position:fixed;bottom:5px;left:50%;transform:translateX(-50%);z-index:10000;padding:15px;width:90%;max-width:700px;text-align:center;background-color:maroon;color:white;font-size:12px;border-radius:8px;';b.appendChild(d);}d.innerHTML=`Error: ${e.message}. Revisa consola (F12).`;}}
 } // Fin de la función initializeApp
 
@@ -1367,6 +1650,7 @@ function setupProgressiveFlow() {
       b.classList.remove('hidden-section');
       b.classList.add('visible-section');
       triggerGoldenGlow(b);
+      b.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -1382,50 +1666,71 @@ function setupProgressiveFlow() {
 
   if (dateInput) {
     dateInput.addEventListener('change', () => {
-      if (dateInput.value) showBloque(3);
+      if (!isDesktop() || !dateInput.value) return;
+      showBloque(3);
+      if (hostInput) hostInput.focus();
+    });
+    dateInput.addEventListener('blur', () => {
+      if (isDesktop() || !dateInput.value) return;
+      showBloque(3);
     });
   }
   if (hostInput) {
-    hostInput.addEventListener('input', () => {
+    hostInput.addEventListener('blur', () => {
       if (hostInput.value.trim().length > 0) showBloque(4);
+    });
+    hostInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        hostInput.blur();
+        if (hostInput.value.trim().length > 0) showBloque(4);
+      }
     });
   }
 
-  // ========================================================================
-// ✅ NUEVO BLOQUE MEJORADO (Implementa tu idea)
-// ========================================================================
-
   const handleHonoreeChoice = (hasHonoree, buttonClicked) => {
-    // Primero, gestionamos la selección visual de los botones
     [honYes, honNo].forEach(btn => btn.classList.remove('active'));
     if(buttonClicked) buttonClicked.classList.add('active');
 
-    // Actualizamos el estado del checkbox invisible
     if (honChk) {
       honChk.checked = hasHonoree;
       honChk.dispatchEvent(new Event('change'));
     }
-    
-    // Mostramos el bloque 5 (Número de Jugadores)
+
     showBloque(5);
-    
-    // ¡Y AHORA LA MAGIA! Como tú sugeriste:
-    // Mostramos inmediatamente el bloque 6 (Nombres de los Jugadores)
     showBloque(6);
+
+    if (hasHonoree) {
+      const honBlock = document.querySelector('.bloque-4');
+      const firstHonInput = document.querySelector('#honorees-container .honoree-name-input');
+      if (honBlock) {
+        honBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      if (firstHonInput) {
+        firstHonInput.focus();
+      }
+    }
   };
 
   if (honYes && honNo) {
     honYes.addEventListener('click', () => handleHonoreeChoice(true, honYes));
     honNo.addEventListener('click', () => handleHonoreeChoice(false, honNo));
   } else if (honChk) {
-    // Si solo existiera el checkbox, mantenemos un fallback
     honChk.addEventListener('change', () => {
         showBloque(5);
         showBloque(6);
+        if (honChk.checked) {
+          const honBlock = document.querySelector('.bloque-4');
+          const firstHonInput = document.querySelector('#honorees-container .honoree-name-input');
+          if (honBlock) {
+            honBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          if (firstHonInput) {
+            firstHonInput.focus();
+          }
+        }
     });
   }
-
-// ========================================================================
 
   if (playerCountInput) {
     playerCountInput.addEventListener('input', () => {
@@ -1476,7 +1781,7 @@ function validarClave() {
   }
 }
 
-// 👉👉 FIN BLOQUE 4: ACCIONES PRINCIPALES Y EXPORTACIÓN �👈
+// 👉👉 FIN BLOQUE 4: ACCIONES PRINCIPALES Y EXPORTACIÓN 👈
 function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, honoreeNames, totalCards, assignedPlayerMap) {
 
     // Helper para obtener el texto de interpretación de la personalidad
@@ -1494,17 +1799,14 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
         return baseWord + suffix;
     }
 
-    // --- Lógica para la nueva línea de información de generación ---
     const generationDate = new Date();
-    // Ajustar a la hora local de Barcelona (CEST) si no se está ejecutando en un entorno con esa zona horaria configurada
-    // Aunque toLocaleDateString ya lo hace con la zona horaria del cliente, se puede ser más explícito para el ejemplo
     const options = { 
         year: 'numeric', 
         month: 'long', 
         day: 'numeric', 
         hour: '2-digit', 
         minute: '2-digit',
-        timeZone: 'Europe/Madrid' // Forzar la zona horaria a CEST (España/Madrid)
+        timeZone: 'Europe/Madrid'
     };
     const formattedGenerationDateTime = generationDate.toLocaleDateString('es-ES', options);
 
@@ -1514,20 +1816,17 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
         deviceType = "un iPhone/iPad";
     } else if (/Android/.test(userAgent)) {
         deviceType = "un dispositivo Android";
-    } else if (/Mobile/.test(userAgent)) { // Catch other generic mobile devices
+    } else if (/Mobile/.test(userAgent)) {
         deviceType = "un dispositivo móvil";
     }
     const generationInfoLine = `Este panel fue generado el ${formattedGenerationDateTime} desde ${deviceType}.`;
-    // --- Fin de la lógica para la nueva línea de información de generación ---
 
-
-    // Generar las tarjetas de personajes en dos columnas
     let characterCardsHtml = '';
     for (let i = 0; i < sortedCharacters.length; i += 2) {
         const char1 = sortedCharacters[i];
         const char2 = sortedCharacters[i + 1];
 
-        characterCardsHtml += '<tr>'; // Abre una nueva fila para las dos columnas
+        characterCardsHtml += '<tr>';
 
         // Tarjeta del personaje 1
         characterCardsHtml += `<td class="character-cell" width="50%" style="padding: 10px; vertical-align: top;">
@@ -1537,13 +1836,13 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                 border-radius: 10px;
                 padding: 20px;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-                position: relative; /* Mantener por si se quiere añadir algo posicionado en el futuro, pero no afecta */
-                overflow: hidden; /* Asegura que cualquier contenido que se salga se recorte */
+                position: relative;
+                overflow: hidden;
             ">
                 <div>
                     <h3 style="
                         color: #e8d8b0;
-                        font-size: 20px; /* Ligeramente más pequeña para 2 columnas */
+                        font-size: 20px;
                         margin: 0 0 10px 0;
                         font-family: Georgia, serif;
                         border-bottom: 1px solid #c0a062;
@@ -1565,7 +1864,7 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                                 font-weight: bold;
                                 display: inline-block;
                                 margin-left: 5px;
-                                font-size: 13px; /* Más pequeña para la píldora */
+                                font-size: 13px;
                             ">${(() => {
                                 const interpretationText = getGenderedInterpretationText(char1.interpretationLevel, char1.gender);
                                 const emojiMap = {'Extrovertido': '🔥', 'Extrovertida': '🔥', 'Introvertido': '🙈', 'Introvertida': '🙈', 'Camaleónico': '🎭', 'Camaleónica': '🎭'};
@@ -1626,14 +1925,12 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                 </div>
             </td>`;
         } else {
-            // Si hay un número impar de personajes, el último td de la fila queda vacío
             characterCardsHtml += `<td class="character-cell" width="50%" style="padding: 10px; vertical-align: top;"></td>`;
         }
 
-        characterCardsHtml += '</tr>'; // Cierra la fila
+        characterCardsHtml += '</tr>';
     }
 
-    // HTML completo del email
     const emailHTML = `
 <!DOCTYPE html>
 <html>
@@ -1643,113 +1940,33 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
     <title>Panel Detectivesco - El Testamento de Mr. Collins</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
-        /* Reset básico para clientes de correo */
-        body, div, p, h1, h2, h3, h4, h5, h6 {
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Lora', Georgia, serif; /* Fuente principal para el cuerpo */
-            background-color: #0a0a0a;
-            color: #f5e8d5;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            width: 100%;
-            display: block;
-        }
-        table {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
-        img {
-            -ms-interpolation-mode: bicubic;
-        }
-        a {
-            text-decoration: none;
-            color: #c0a062;
-        }
-        /* Colores y estilos generales */
-        :root {
-            --color-dark-bg: #0a0a0a;
-            --color-medium-bg: #1a1a1a;
-            --color-card-bg: #2a2a2a;
-            --color-gold: #c0a062;
-            --color-dark-gold: #8c703c;
-            --color-text-light: #f5e8d5;
-            --color-text-highlight: #e8d8b0;
-            --color-dark-text: #1a1a1a;
-        }
-        /* Estilos específicos para componentes */
-        .header-bg {
-            background: linear-gradient(135deg, var(--color-dark-gold) 0%, var(--color-gold) 50%, var(--color-dark-gold) 100%);
-        }
-        .title-text {
-            font-family: 'Playfair Display', Georgia, serif; /* Fuente distintiva para títulos */
-            font-weight: 700;
-        }
-        .section-box {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-gold);
-            border-radius: 10px;
-        }
-        .character-card {
-            background: linear-gradient(135deg, var(--color-card-bg) 0%, var(--color-medium-bg) 100%);
-            border: 2px solid var(--color-gold);
-            border-radius: 10px;
-        }
-        .personality-pill {
-            background: var(--color-gold);
-            color: var(--color-dark-text);
-            font-weight: bold;
-            border-radius: 4px;
-        }
-        /* Estilos para columnas */
-        .character-cell {
-            padding: 10px; /* Espacio entre tarjetas */
-            vertical-align: top; /* Alinear arriba para que las tarjetas se vean bien */
-        }
-
-        /* MEDIA QUERIES para dispositivos móviles (soporte variable en clientes de email) */
+        body, div, p, h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
+        body { font-family: 'Lora', Georgia, serif; background-color: #0a0a0a; color: #f5e8d5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; width: 100%; display: block; }
+        table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; }
+        a { text-decoration: none; color: #c0a062; }
+        :root { --color-dark-bg: #0a0a0a; --color-medium-bg: #1a1a1a; --color-card-bg: #2a2a2a; --color-gold: #c0a062; --color-dark-gold: #8c703c; --color-text-light: #f5e8d5; --color-text-highlight: #e8d8b0; --color-dark-text: #1a1a1a; }
+        .header-bg { background: linear-gradient(135deg, var(--color-dark-gold) 0%, var(--color-gold) 50%, var(--color-dark-gold) 100%); }
+        .title-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
+        .section-box { background-color: var(--color-card-bg); border: 1px solid var(--color-gold); border-radius: 10px; }
+        .character-card { background: linear-gradient(135deg, var(--color-card-bg) 0%, var(--color-medium-bg) 100%); border: 2px solid var(--color-gold); border-radius: 10px; }
+        .personality-pill { background: var(--color-gold); color: var(--color-dark-text); font-weight: bold; border-radius: 4px; }
+        .character-cell { padding: 10px; vertical-align: top; }
         @media only screen and (max-width: 600px) {
-            table[class="main-table"] {
-                width: 100% !important;
-            }
-            td[class="header-bg"], td[class="section-box"], td[class="character-cell"] {
-                padding-left: 15px !important;
-                padding-right: 15px !important;
-            }
-            table[class="character-cards-table"] {
-                width: 100% !important;
-            }
-            td[class="character-cell"] {
-                width: 100% !important; /* Cada tarjeta ocupa el 100% en móvil */
-                display: block !important; /* Asegura que la celda se comporte como un bloque */
-                margin-bottom: 10px; /* Espacio entre tarjetas en móvil */
-            }
-            .character-card {
-                margin-bottom: 0px !important; /* Elimina el margin-bottom de la tarjeta cuando es block */
-            }
-            h1.title-text {
-                font-size: 28px !important;
-            }
-            h2.title-text {
-                font-size: 20px !important;
-            }
-            h3 {
-                font-size: 18px !important;
-            }
-            .personality-pill {
-                font-size: 12px !important;
-            }
-            p span {
-                font-size: 15px !important;
-            }
+            table[class="main-table"] { width: 100% !important; }
+            td[class="header-bg"], td[class="section-box"], td[class="character-cell"] { padding-left: 15px !important; padding-right: 15px !important; }
+            table[class="character-cards-table"] { width: 100% !important; }
+            td[class="character-cell"] { width: 100% !important; display: block !important; margin-bottom: 10px; }
+            .character-card { margin-bottom: 0px !important; }
+            h1.title-text { font-size: 28px !important; }
+            h2.title-text { font-size: 20px !important; }
+            h3 { font-size: 18px !important; }
+            .personality-pill { font-size: 12px !important; }
+            p span { font-size: 15px !important; }
         }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Lora', Georgia, serif; background-color: #0a0a0a; color: #f5e8d5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; width: 100%; display: block;">
-
     <center>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #0a0a0a;">
             <tr>
@@ -1758,7 +1975,6 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                         <tr>
                             <td class="header-bg" style="background: linear-gradient(135deg, #8c703c 0%, #c0a062 50%, #8c703c 100%); padding: 40px 20px; text-align: center; position: relative; overflow: hidden;">
                                 <h1 class="title-text" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #1a1a1a; font-size: 36px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); position: relative; z-index: 1;">🕵️ PANEL DETECTIVESCO 🕵️</h1>
-
                                 <div style="background: #1a1a1a; color: #c0a062; padding: 10px 30px; display: inline-block; margin-top: 15px; border-radius: 20px; font-size: 18px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3); position: relative; z-index: 1;">El Testamento de Mr. Collins</div>
                             </td>
                         </tr>
@@ -1768,26 +1984,11 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                                     <tr>
                                         <td style="text-align: center;">
                                             <h2 class="title-text" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #e8d8b0; font-size: 24px; margin: 0 0 20px 0;">⚰️ Detalles del Caso ⚰️</h2>
-
                                             <div style="display: inline-block; text-align: left; font-size: 16px; line-height: 1.8;">
-                                                <p style="margin: 8px 0;">
-                                                    <strong style="color: #c0a062;">📅 Fecha del evento:</strong>
-                                                    <span style="color: #f5e8d5; font-size: 18px;">${formattedDate}</span>
-                                                </p>
-                                                ${hostName ? `
-                                                <p style="margin: 8px 0;">
-                                                    <strong style="color: #c0a062;">🎩 Anfitrión:</strong>
-                                                    <span style="color: #f5e8d5; font-size: 18px;">${hostName}</span>
-                                                </p>` : ''}
-                                                ${honoreeNames.length > 0 ? `
-                                                <p style="margin: 8px 0;">
-                                                    <strong style="color: #c0a062;">🌟 Homenajeado(s):</strong>
-                                                    <span style="color: #f5e8d5; font-size: 18px;">${honoreeNames.join(', ')}</span>
-                                                </p>` : ''}
-                                                <p style="margin: 8px 0;">
-                                                    <strong style="color: #c0a062;">👥 Total de sospechosos:</strong>
-                                                    <span style="color: #f5e8d5; font-size: 18px;">${totalCards}</span>
-                                                </p>
+                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">📅 Fecha del evento:</strong> <span style="color: #f5e8d5; font-size: 18px;">${formattedDate}</span></p>
+                                                ${hostName ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🎩 Anfitrión:</strong> <span style="color: #f5e8d5; font-size: 18px;">${hostName}</span></p>` : ''}
+                                                ${honoreeNames.length > 0 ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🌟 Homenajeado(s):</strong> <span style="color: #f5e8d5; font-size: 18px;">${honoreeNames.join(', ')}</span></p>` : ''}
+                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">👥 Total de sospechosos:</strong> <span style="color: #f5e8d5; font-size: 18px;">${totalCards}</span></p>
                                             </div>
                                         </td>
                                     </tr>
@@ -1812,7 +2013,6 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                         <tr>
                             <td class="header-bg" style="background: linear-gradient(135deg, #8c703c 0%, #c0a062 50%, #8c703c 100%); padding: 20px 20px 30px 20px; text-align: center; margin-top: 0px; border-top: 1px solid #8c703c;">
                                 <p style="color: #1a1a1a; font-size: 14px; margin: 0 0 10px 0; font-weight: bold;">🔍 CONFIDENCIAL - NO COMPARTIR 🔍</p>
-
                                 <p style="color: #1a1a1a; font-size: 12px; margin: 0; opacity: 0.8;">© 2024 123 Action Barcelona - Experiencias teatrales únicas<br>
                                 Sistema de Asignación de Sospechosos v1.0<br>
                                 <span style="font-size: 10px; color: #333333; display: block; margin-top: 5px;">${generationInfoLine}</span>
@@ -1829,4 +2029,9 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
     `;
 
     return emailHTML;
+}
+// Fix para wallpaper en iOS
+if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    document.documentElement.style.backgroundAttachment = 'scroll';
+    document.documentElement.style.backgroundBlendMode = 'normal';
 }
