@@ -1297,7 +1297,15 @@ function initializeApp(initialChars, initialPacks) {
                     width: (page.width - (margin * 2) - (columnMargin * (numColumns - 1))) / numColumns,
                     height: 25
                 };
-                const colors = { dark: '#2c1f1b', gold: '#8c703c', light_gold: '#c0a062', bg: '#faf3e0' };
+                const colors = {
+                    page_bg: '#1a1a1a',
+                    dark: '#e0d8cd',
+                    gold: '#d4af37',
+                    light_gold: '#c0a062',
+                    bg: '#2a2823'
+                };
+                doc.setFillColor(colors.page_bg);
+                doc.rect(0, 0, page.width, page.height, 'F');
 
                 const hostPlayerName = hostName ? hostName + " 🎩" : null;
                 const honoreePlayerNames = honoreeNames.map(name => name + " 🌟");
@@ -1329,7 +1337,7 @@ function initializeApp(initialChars, initialPacks) {
 
                 try { doc.setFont('PlayfairDisplay-Bold', 'bold'); } catch (e) { doc.setFont('Helvetica', 'bold'); }
                 doc.setFontSize(20);
-                doc.setTextColor(colors.dark);
+                doc.setTextColor(colors.light_gold);
                 doc.text("Panel Detectivesco", page.width / 2, margin + 8, { align: 'center' });
 
                 doc.setFont('Helvetica', 'italic');
@@ -1358,7 +1366,6 @@ function initializeApp(initialChars, initialPacks) {
 
                 yPos = drawInfoLine(yPos, "Nº de Sospechosos:", String(totalCards));
                 if (hostName) yPos = drawInfoLine(yPos, "Anfitrión:", hostName);
-                if (hostEmail) yPos = drawInfoLine(yPos, "Email Anfitrión:", hostEmail);
                 if (honoreeNames && honoreeNames.length > 0) yPos = drawInfoLine(yPos, "Homenajeado/a(s):", honoreeNames.join(', '));
 
                 yPos += 3;
