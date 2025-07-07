@@ -1694,9 +1694,12 @@ function validarClave() {
 // 👉👉 FIN BLOQUE 4 👈👈
 
 function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, honoreeNames, totalCards, assignedPlayerMap) {
+
+    // Helper para obtener el texto de interpretación de la personalidad
     function getGenderedInterpretationText(level, gender) {
         const firstLetter = level ? level[0].toUpperCase() : "U";
         let baseWord;
+
         switch (firstLetter) {
             case "E": baseWord = "Extrovertid"; break;
             case "I": baseWord = "Introvertid"; break;
@@ -1708,38 +1711,234 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
     }
 
     const generationDate = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' };
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Europe/Madrid'
+    };
     const formattedGenerationDateTime = generationDate.toLocaleDateString('es-ES', options);
 
     let deviceType = "un ordenador";
     const userAgent = navigator.userAgent;
-    if (/iPhone|iPad|iPod/.test(userAgent)) { deviceType = "un iPhone/iPad"; } 
-    else if (/Android/.test(userAgent)) { deviceType = "un dispositivo Android"; } 
-    else if (/Mobile/.test(userAgent)) { deviceType = "un dispositivo móvil"; }
+    if (/iPhone|iPad|iPod/.test(userAgent)) {
+        deviceType = "un iPhone/iPad";
+    } else if (/Android/.test(userAgent)) {
+        deviceType = "un dispositivo Android";
+    } else if (/Mobile/.test(userAgent)) {
+        deviceType = "un dispositivo móvil";
+    }
     const generationInfoLine = `Este panel fue generado el ${formattedGenerationDateTime} desde ${deviceType}.`;
 
     let characterCardsHtml = '';
     for (let i = 0; i < sortedCharacters.length; i += 2) {
         const char1 = sortedCharacters[i];
         const char2 = sortedCharacters[i + 1];
+
         characterCardsHtml += '<tr>';
-        characterCardsHtml += `<td class="character-cell" width="50%" style="padding: 10px; vertical-align: top;"><div class="character-card" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); border: 2px solid #c0a062; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);"><h3 style="color: #e8d8b0; font-size: 20px; margin: 0 0 10px 0; font-family: Georgia, serif; border-bottom: 1px solid #c0a062; padding-bottom: 10px;">${char1.name}</h3><p style="margin: 5px 0;"><strong style="color: #c0a062;">Jugador:</strong> <span>${(assignedPlayerMap.get(char1.name) || 'Sin asignar').replace(/🎩|🌟/g, '').trim()}</span></p></div></td>`;
+
+        // Tarjeta del personaje 1
+        characterCardsHtml += `<td class="character-cell" width="50%" style="padding: 10px; vertical-align: top;">
+            <div class="character-card" style="
+                background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+                border: 2px solid #c0a062;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+                position: relative;
+                overflow: hidden;
+            ">
+                <div>
+                    <h3 style="
+                        color: #e8d8b0;
+                        font-size: 20px;
+                        margin: 0 0 10px 0;
+                        font-family: Georgia, serif;
+                        border-bottom: 1px solid #c0a062;
+                        padding-bottom: 10px;
+                    "><span style="color: #c0a062; margin-right: 8px; font-size: 18px; font-weight: bold;">${i + 1}.</span>${char1.name}</h3>
+                    
+                    <div style="color: #f5e8d5; font-size: 15px; line-height: 1.5;">
+                        <p style="margin: 5px 0;">
+                            <strong style="color: #c0a062;">👤 Jugador:</strong> 
+                            <span style="font-size: 16px;">${(assignedPlayerMap.get(char1.name) || 'Sin asignar').replace(/🎩|🌟/g, '').trim()}${assignedPlayerMap.get(char1.name)?.includes('🎩') ? ' (Anfitrión)' : assignedPlayerMap.get(char1.name)?.includes('🌟') ? ' (Homenajeado)' : ''}</span>
+                        </p>
+                        <p style="margin: 5px 0;">
+                            <strong style="color: #c0a062;">🎭 Personalidad:</strong> 
+                            <span class="personality-pill" style="
+                                background: #c0a062;
+                                color: #1a1a1a;
+                                padding: 2px 6px;
+                                border-radius: 4px;
+                                font-weight: bold;
+                                display: inline-block;
+                                margin-left: 5px;
+                                font-size: 13px;
+                            ">${(() => {
+                                const interpretationText = getGenderedInterpretationText(char1.interpretationLevel, char1.gender);
+                                const emojiMap = {'Extrovertido': '🔥', 'Extrovertida': '🔥', 'Introvertido': '🙈', 'Introvertida': '🙈', 'Camaleónico': '🎭', 'Camaleónica': '🎭'};
+                                return (emojiMap[interpretationText] || '🎭') + ' ' + interpretationText.toUpperCase();
+                            })()}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </td>`;
+
+        // Tarjeta del personaje 2 (si existe)
         if (char2) {
-            characterCardsHtml += `<td class="character-cell" width="50%" style="padding: 10px; vertical-align: top;"><div class="character-card" style="background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); border: 2px solid #c0a062; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);"><h3 style="color: #e8d8b0; font-size: 20px; margin: 0 0 10px 0; font-family: Georgia, serif; border-bottom: 1px solid #c0a062; padding-bottom: 10px;">${char2.name}</h3><p style="margin: 5px 0;"><strong style="color: #c0a062;">Jugador:</strong> <span>${(assignedPlayerMap.get(char2.name) || 'Sin asignar').replace(/🎩|🌟/g, '').trim()}</span></p></div></td>`;
+            characterCardsHtml += `<td class="character-cell" width="50%" style="padding: 10px; vertical-align: top;">
+                <div class="character-card" style="
+                    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+                    border: 2px solid #c0a062;
+                    border-radius: 10px;
+                    padding: 20px;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+                    position: relative;
+                    overflow: hidden;
+                ">
+                    <div>
+                        <h3 style="
+                            color: #e8d8b0;
+                            font-size: 20px;
+                            margin: 0 0 10px 0;
+                            font-family: Georgia, serif;
+                            border-bottom: 1px solid #c0a062;
+                            padding-bottom: 10px;
+                        "><span style="color: #c0a062; margin-right: 8px; font-size: 18px; font-weight: bold;">${i + 2}.</span>${char2.name}</h3>
+                        
+                        <div style="color: #f5e8d5; font-size: 15px; line-height: 1.5;">
+                            <p style="margin: 5px 0;">
+                                <strong style="color: #c0a062;">👤 Jugador:</strong> 
+                                <span style="font-size: 16px;">${(assignedPlayerMap.get(char2.name) || 'Sin asignar').replace(/🎩|🌟/g, '').trim()}${assignedPlayerMap.get(char2.name)?.includes('🎩') ? ' (Anfitrión)' : assignedPlayerMap.get(char2.name)?.includes('🌟') ? ' (Homenajeado)' : ''}</span>
+                            </p>
+                            <p style="margin: 5px 0;">
+                                <strong style="color: #c0a062;">🎭 Personalidad:</strong> 
+                                <span class="personality-pill" style="
+                                    background: #c0a062;
+                                    color: #1a1a1a;
+                                    padding: 2px 6px;
+                                    border-radius: 4px;
+                                    font-weight: bold;
+                                    display: inline-block;
+                                    margin-left: 5px;
+                                    font-size: 13px;
+                                ">${(() => {
+                                    const interpretationText = getGenderedInterpretationText(char2.interpretationLevel, char2.gender);
+                                    const emojiMap = {'Extrovertido': '🔥', 'Extrovertida': '🔥', 'Introvertido': '🙈', 'Introvertida': '🙈', 'Camaleónico': '🎭', 'Camaleónica': '🎭'};
+                                    return (emojiMap[interpretationText] || '🎭') + ' ' + interpretationText.toUpperCase();
+                                })()}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </td>`;
         } else {
-            characterCardsHtml += `<td></td>`;
+            characterCardsHtml += `<td class="character-cell" width="50%" style="padding: 10px; vertical-align: top;"></td>`;
         }
+
         characterCardsHtml += '</tr>';
     }
 
     const emailHTML = `
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Panel Detectivesco</title><style>body{font-family:'Lora',serif;background-color:#0a0a0a;color:#f5e8d5;}</style></head>
-<body><center><table width="650" style="background:#1a1a1a;">
-<tr><td style="background:linear-gradient(135deg, #8c703c, #c0a062);padding:40px 20px;text-align:center;"><h1 style="color:#1a1a1a;">Panel Detectivesco</h1></td></tr>
-<tr><td style="padding:20px;"><h2 style="color:#e8d8b0;">Detalles del Caso</h2><p><strong>Fecha:</strong> ${formattedDate}</p>${hostName ? `<p><strong>Anfitrión:</strong> ${hostName}</p>` : ''}${honoreeNames.length > 0 ? `<p><strong>Homenajeado(s):</strong> ${honoreeNames.join(', ')}</p>` : ''}<p><strong>Sospechosos:</strong> ${totalCards}</p></td></tr>
-<tr><td style="padding:20px;"><h2 style="color:#e8d8b0;">Asignaciones</h2><table width="100%">${characterCardsHtml}</table></td></tr>
-<tr><td style="padding:20px;text-align:center;font-size:12px;color:#333;"><p>${generationInfoLine}</p></td></tr>
-</table></center></body></html>`;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Detectivesco - El Testamento de Mr. Collins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <style>
+        body, div, p, h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
+        body { font-family: 'Lora', Georgia, serif; background-color: #0a0a0a; color: #f5e8d5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; width: 100%; display: block; }
+        table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; }
+        a { text-decoration: none; color: #c0a062; }
+        :root { --color-dark-bg: #0a0a0a; --color-medium-bg: #1a1a1a; --color-card-bg: #2a2a2a; --color-gold: #c0a062; --color-dark-gold: #8c703c; --color-text-light: #f5e8d5; --color-text-highlight: #e8d8b0; --color-dark-text: #1a1a1a; }
+        .header-bg { background: linear-gradient(135deg, var(--color-dark-gold) 0%, var(--color-gold) 50%, var(--color-dark-gold) 100%); }
+        .title-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; }
+        .section-box { background-color: var(--color-card-bg); border: 1px solid var(--color-gold); border-radius: 10px; }
+        .character-card { background: linear-gradient(135deg, var(--color-card-bg) 0%, var(--color-medium-bg) 100%); border: 2px solid var(--color-gold); border-radius: 10px; }
+        .personality-pill { background: var(--color-gold); color: var(--color-dark-text); font-weight: bold; border-radius: 4px; }
+        .character-cell { padding: 10px; vertical-align: top; }
+        @media only screen and (max-width: 600px) {
+            table[class="main-table"] { width: 100% !important; }
+            td[class="header-bg"], td[class="section-box"], td[class="character-cell"] { padding-left: 15px !important; padding-right: 15px !important; }
+            table[class="character-cards-table"] { width: 100% !important; }
+            td[class="character-cell"] { width: 100% !important; display: block !important; margin-bottom: 10px; }
+            .character-card { margin-bottom: 0px !important; }
+            h1.title-text { font-size: 28px !important; }
+            h2.title-text { font-size: 20px !important; }
+            h3 { font-size: 18px !important; }
+            .personality-pill { font-size: 12px !important; }
+            p span { font-size: 15px !important; }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Lora', Georgia, serif; background-color: #0a0a0a; color: #f5e8d5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; width: 100%; display: block;">
+    <center>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #0a0a0a;">
+            <tr>
+                <td align="center" style="padding: 0;">
+                    <table width="650" border="0" cellpadding="0" cellspacing="0" class="main-table" style="max-width: 650px; background: linear-gradient(to bottom, #1a1a1a 0%, #0a0a0a 100%); border-left: 1px solid #c0a062; border-right: 1px solid #c0a062;">
+                        <tr>
+                            <td class="header-bg" style="background: linear-gradient(135deg, #8c703c 0%, #c0a062 50%, #8c703c 100%); padding: 40px 20px; text-align: center; position: relative; overflow: hidden;">
+                                <h1 class="title-text" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #1a1a1a; font-size: 36px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); position: relative; z-index: 1;">🕵️ PANEL DETECTIVESCO 🕵️</h1>
+                                <div style="background: #1a1a1a; color: #c0a062; padding: 10px 30px; display: inline-block; margin-top: 15px; border-radius: 20px; font-size: 18px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3); position: relative; z-index: 1;">El Testamento de Mr. Collins</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 20px;">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="section-box" style="background-color: #2a2a2a; margin: 0; padding: 25px; border-radius: 10px; border: 1px solid #c0a062; text-align: center;">
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <h2 class="title-text" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #e8d8b0; font-size: 24px; margin: 0 0 20px 0;">⚰️ Detalles del Caso ⚰️</h2>
+                                            <div style="display: inline-block; text-align: left; font-size: 16px; line-height: 1.8;">
+                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">📅 Fecha del evento:</strong> <span style="color: #f5e8d5; font-size: 18px;">${formattedDate}</span></p>
+                                                ${hostName ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🎩 Anfitrión:</strong> <span style="color: #f5e8d5; font-size: 18px;">${hostName}</span></p>` : ''}
+                                                ${honoreeNames.length > 0 ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🌟 Homenajeado(s):</strong> <span style="color: #f5e8d5; font-size: 18px;">${honoreeNames.join(', ')}</span></p>` : ''}
+                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">👥 Total de sospechosos:</strong> <span style="color: #f5e8d5; font-size: 18px;">${totalCards}</span></p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 30px 20px 20px 20px; text-align: center;">
+                                <h2 class="title-text" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #e8d8b0; font-size: 28px; margin: 0; position: relative; display: inline-block;">
+                                    <span style="display: inline-block; padding: 0 40px;">📋 Asignaciones Secretas 📋</span>
+                                    <div style="position: absolute; left: 0; right: 0; bottom: -10px; height: 2px; background: linear-gradient(to right, transparent, #c0a062, transparent);"></div>
+                                </h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 20px 20px 20px;">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="character-cards-table">
+                                    ${characterCardsHtml}
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="header-bg" style="background: linear-gradient(135deg, #8c703c 0%, #c0a062 50%, #8c703c 100%); padding: 20px 20px 30px 20px; text-align: center; margin-top: 0px; border-top: 1px solid #8c703c;">
+                                <p style="color: #1a1a1a; font-size: 14px; margin: 0 0 10px 0; font-weight: bold;">🔍 CONFIDENCIAL - NO COMPARTIR 🔍</p>
+                                <p style="color: #1a1a1a; font-size: 12px; margin: 0; opacity: 0.8;">© 2024 123 Action Barcelona - Experiencias teatrales únicas<br>
+                                Sistema de Asignación de Sospechosos v1.0<br>
+                                <span style="font-size: 10px; color: #333333; display: block; margin-top: 5px;">${generationInfoLine}</span>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>
+    `;
+
     return emailHTML;
 }
 
