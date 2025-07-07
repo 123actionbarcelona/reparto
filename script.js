@@ -41,27 +41,27 @@ const packs_data = {
 
 const specialIconDetails = {
     isBirthdayFriendly: {
-        title: '🌟 <strong>Rol principal</strong>',
-        text: 'Permite que el homenajeado se luzca.'
+        title: '🌟 <strong>Lead role</strong>',
+        text: 'Lets the honoree shine.'
     },
     isKidFriendly: {
-        title: '🧸 <strong>Apto para menores</strong>',
-        text: 'Fácil de entender y sin contenido +18.'
+        title: '🧸 <strong>Kid-friendly</strong>',
+        text: 'Easy to understand and no adult content.'
     },
     isSeniorFriendly: {
-        title: '👵🏻 <strong>Personaje versátil</strong>',
-        text: 'Compatible con personas mayores: trama clara y fácil de interpretar.'
+        title: '👵🏻 <strong>Versatile character</strong>',
+        text: 'Good for seniors: clear plot and easy to play.'
     }
 };
 
 const comboIconDetails = {
     birthday_senior: {
-        title: '🌟👵🏻 <strong>Personaje versátil</strong>',
-        text: '<strong>Compatible con personas mayores:</strong> trama clara y fácil de interpretar, ideal para un papel destacado sin complicaciones.'
+        title: '🌟👵🏻 <strong>Versatile character</strong>',
+        text: '<strong>Works well for seniors:</strong> straightforward story, ideal for a leading part without complications.'
     },
     kid_senior: {
-        title: '🧸👵🏻 <strong>Personaje versátil</strong>',
-        text: 'Compatible tanto con <strong>jugadores jóvenes</strong> como con <strong>personas mayores</strong>.<br><br>Trama accesible, sin contenido +18 y fácil de interpretar para cualquier tipo de jugador.'
+        title: '🧸👵🏻 <strong>Versatile character</strong>',
+        text: 'Suitable for both <strong>young players</strong> and <strong>seniors</strong>.<br><br>Accessible plot, no adult content and easy for any type of player.'
     }
 };
 
@@ -75,13 +75,12 @@ function getGenderedInterpretationText(level, gender) {
     let baseWord;
 
     switch (firstLetter) {
-        case "E": baseWord = "Extrovertid"; break;
-        case "I": baseWord = "Introvertid"; break;
-        case "N": baseWord = "Camaleónic";break;
-        default:  return "Indefinido";
+        case "E": baseWord = "Extrovert"; break;
+        case "I": baseWord = "Introvert"; break;
+        case "N": baseWord = "Chameleon"; break;
+        default:  return "Undefined";
     }
-    const suffix = (gender && gender.toUpperCase() === "F") ? "a" : "o";
-    return baseWord + suffix;
+    return baseWord;
 }
 
 function triggerGoldenGlow(element) {
@@ -158,7 +157,7 @@ function initializeApp(initialChars, initialPacks) {
                 const toggleTextSpan = btn.querySelector('.toggle-text');
                 const moonIcon = btn.querySelector('.fa-moon');
                 const sunIcon = btn.querySelector('.fa-sun');
-                if (toggleTextSpan) toggleTextSpan.textContent = isDarkMode ? 'Modo Día' : 'Modo Noche';
+                if (toggleTextSpan) toggleTextSpan.textContent = isDarkMode ? 'Day Mode' : 'Night Mode';
                 if (moonIcon) moonIcon.style.display = isDarkMode ? 'none' : 'inline-block';
                 if (sunIcon) sunIcon.style.display = isDarkMode ? 'inline-block' : 'none';
             });
@@ -224,9 +223,9 @@ function initializeApp(initialChars, initialPacks) {
             let msg = '';
             let type = '';
             let valid = true;
-            if (!val) { msg = '⚠️ Campo requerido'; type = 'warning'; valid = false; }
-            else if (val.length < 2) { msg = '❌ Mínimo 2 caracteres'; type = 'error'; valid = false; }
-            else if (isDuplicateName(val, input)) { msg = '❌ Nombre ya usado'; type = 'error'; valid = false; }
+            if (!val) { msg = '⚠️ Required field'; type = 'warning'; valid = false; }
+            else if (val.length < 2) { msg = '❌ Minimum 2 characters'; type = 'error'; valid = false; }
+            else if (isDuplicateName(val, input)) { msg = '❌ Name already used'; type = 'error'; valid = false; }
             if (!silent) {
                 setValidationMessage(input, msg, type);
                 if (!valid && showToast) {
@@ -246,7 +245,7 @@ function initializeApp(initialChars, initialPacks) {
             let msg = '';
             let type = '';
             let valid = true;
-            if (!val) { msg = '⚠️ Campo requerido'; type = 'warning'; valid = false; }
+            if (!val) { msg = '⚠️ Required field'; type = 'warning'; valid = false; }
             
             if (!silent) {
                 setValidationMessage(input, msg, type);
@@ -499,7 +498,7 @@ function initializeApp(initialChars, initialPacks) {
 
             const newInput = document.createElement('input');
             newInput.type = 'text';
-            newInput.placeholder = `Nombre Homenajeado/a ${container.children.length + 1}`;
+            newInput.placeholder = `Honoree Name ${container.children.length + 1}`;
             newInput.className = 'player-name-box honoree-name-input';
             newInput.value = name;
             const msgDiv = document.createElement('div');
@@ -617,7 +616,7 @@ function initializeApp(initialChars, initialPacks) {
                     const input = document.createElement('input');
                     input.type = 'text'; input.classList.add('player-name-box');
                     input.value = currentHostNameVal + " 🎩"; input.readOnly = true;
-                    input.title = "Anfitrión/Host (configurado arriba)";
+                    input.title = "Host (set above)";
                     domElements['player-names-grid-container'].appendChild(input);
                     playerBoxIndex++;
                 }
@@ -628,7 +627,7 @@ function initializeApp(initialChars, initialPacks) {
                     const input = document.createElement('input');
                     input.type = 'text'; input.classList.add('player-name-box');
                     input.value = honoreeCleanName + " 🌟"; input.readOnly = true;
-                    input.title = "Homenajeado/a (configurado arriba)";
+                    input.title = "Honoree (set above)";
                     domElements['player-names-grid-container'].appendChild(input);
                     playerBoxIndex++;
                 }
@@ -647,7 +646,7 @@ function initializeApp(initialChars, initialPacks) {
                     input.value = '';
                 }
 
-                input.placeholder = `Jugador ${i + 1 - playerBoxIndex + (currentHostNameVal ? 1 : 0) + currentHonoreeCleanNamesArr.length}`;
+                input.placeholder = `Player ${i + 1 - playerBoxIndex + (currentHostNameVal ? 1 : 0) + currentHonoreeCleanNamesArr.length}`;
                 if (i === playerBoxIndex && !currentHostNameVal && currentHonoreeCleanNamesArr.length === 0) {
                      input.placeholder = "(Tu nombre como jugador)";
                 }
@@ -689,7 +688,7 @@ function initializeApp(initialChars, initialPacks) {
             domElements['female-characters-grid'].innerHTML = ''; domElements['male-characters-grid'].innerHTML = '';
             const charNames = packs[playerCount];
             if (!charNames) {
-                showToastNotification(`Error interno cargando pack para ${playerCount}.`, 'error');
+                showToastNotification(`Internal error loading pack for ${playerCount}.`, 'error');
                 domElements['main-content-area'].classList.remove('visible-section'); domElements['main-content-area'].classList.add('hidden-section'); return;
             }
             currentCharacters = charNames.map(name => {
@@ -797,7 +796,7 @@ function initializeApp(initialChars, initialPacks) {
             </div>`;
 
             const nameHtml = `<h4>${character.name}</h4>`;
-            frame.innerHTML = `${imageHtml}${placeholderHtml}<div class="character-portrait-content">${nameHtml}<div class="character-details-section"><p id="desc-${charId}" class="character-description">${character.description||'Descripción no disponible.'}</p></div><div class="character-details-section">${createExtroversionLevelElement(character, charId)}</div>${createPlayerAssignmentElement(character, charId)}${shareButtonHtml}</div>`;
+            frame.innerHTML = `${imageHtml}${placeholderHtml}<div class="character-portrait-content">${nameHtml}<div class="character-details-section"><p id="desc-${charId}" class="character-description">${character.description||'Description not available.'}</p></div><div class="character-details-section">${createExtroversionLevelElement(character, charId)}</div>${createPlayerAssignmentElement(character, charId)}${shareButtonHtml}</div>`;
             gridDiv.appendChild(frame);
             attachCardEventListeners(frame, character, charId);
         }
@@ -819,7 +818,7 @@ function initializeApp(initialChars, initialPacks) {
                             }
                         }
                         if(existingCharForThisPlayer){
-                            showToastNotification(`"${currentSelectedPlayerName.replace("🎩","").replace("🌟","").trim()}" ya está asignado a "${existingCharForThisPlayer}".`, 'error');
+                            showToastNotification(`"${currentSelectedPlayerName.replace("🎩","").replace("🌟","").trim()}" is already assigned to "${existingCharForThisPlayer}".`, 'error');
                             this.value=previousPlayerForThisChar||"";
                             this.classList.toggle('assigned',!!previousPlayerForThisChar);
                         } else {
@@ -853,9 +852,9 @@ function initializeApp(initialChars, initialPacks) {
 
                     let displayText = playerName;
                     if (playerName.includes("🎩")) {
-                        displayText = playerName + " (Anfitrión)";
+                        displayText = playerName + " (Host)";
                     } else if (playerName.includes("🌟")) {
-                        displayText = playerName + " (Homenajeado)";
+                        displayText = playerName + " (Honoree)";
                     }
                     optionsHtml += `<option value="${playerName}" ${isPlayerAssignedElsewhereFlag ? 'disabled' : ''}>${displayText}</option>`;
                 });
@@ -941,7 +940,7 @@ function initializeApp(initialChars, initialPacks) {
             evidenceCardsContainer.innerHTML = ''; 
     
             currentCharacters.forEach(character => {
-                const player = assignedPlayerMap.get(character.name) || 'Sin asignar';
+                const player = assignedPlayerMap.get(character.name) || 'Unassigned';
                 const cleanPlayerName = player.replace(/🎩|🌟/g, '').trim();
     
                 const card = document.createElement('div');
@@ -1158,7 +1157,7 @@ function initializeApp(initialChars, initialPacks) {
 
             updateFormProgress();
 
-            showToastNotification('Has vuelto a la configuración. Los datos se conservan.', 'info');
+            showToastNotification('Returned to setup. Data preserved.', 'info');
         }
 
         function handleStartAssignment() {
@@ -1172,7 +1171,7 @@ function initializeApp(initialChars, initialPacks) {
             eventDateValue = domElements['event-date-input'] ? domElements['event-date-input'].value : "";
 
             if (!eventDateValue) {
-                showToastNotification('Por favor, selecciona la fecha del evento para continuar.', 'error');
+                showToastNotification('Please select the event date to continue.', 'error');
                 if (domElements['event-date-input']) domElements['event-date-input'].focus();
                 return;
             }
@@ -1183,7 +1182,7 @@ function initializeApp(initialChars, initialPacks) {
 
             const playerCount = parseInt(domElements['player-count'].value);
             if (!packs[playerCount]) {
-                showToastNotification(`No hay pack para ${playerCount} jugadores. Packs: ${Object.keys(packs).join(', ')}.`, 'error');
+                showToastNotification(`No character pack for ${playerCount} players. Packs: ${Object.keys(packs).join(', ')}.`, 'error');
                 domElements['main-content-area'].classList.remove('visible-section'); domElements['main-content-area'].classList.add('hidden-section'); return;
             }
 
@@ -1209,11 +1208,11 @@ function initializeApp(initialChars, initialPacks) {
             const actualEditableNamesEntered = nameInputs.length > 0 ? Array.from(nameInputs).filter(input => input.value.trim()).length : 0;
 
             if (availablePlayerNames.length !== playerCount) {
-                 showToastNotification(`El número de jugadores (${playerCount}) no coincide con los nombres proporcionados (${availablePlayerNames.length}, incluyendo anfitrión/homenajeados). Revisa los campos. Asegúrate de que todos los jugadores tengan nombre.`, 'error', 6000);
+                 showToastNotification(`Player count (${playerCount}) doesn't match the names provided (${availablePlayerNames.length}, including host/honorees). Check the fields and ensure every player has a name.`, 'error', 6000);
                  return;
             }
             if (expectedEditableNames > 0 && actualEditableNamesEntered < expectedEditableNames) {
-                showToastNotification(`Faltan nombres de jugadores. Se esperan ${expectedEditableNames} nombres adicionales.`, 'error', 5000);
+                showToastNotification(`Missing player names. Expected ${expectedEditableNames} more.`, 'error', 5000);
                 return;
             }
 
@@ -1234,7 +1233,7 @@ function initializeApp(initialChars, initialPacks) {
                         break;
                     }
                 }
-                showToastNotification(`Error: El nombre "${duplicateNameFoundForMessage}" está duplicado. Por favor, usa nombres únicos o añade un distintivo (ej: Ana S.).`, 'error', 6000);
+                showToastNotification(`Error: The name "${duplicateNameFoundForMessage}" is duplicated. Please use unique names or add an initial (e.g., Anna S.).`, 'error', 6000);
                 return;
             }
 
@@ -1275,10 +1274,10 @@ function initializeApp(initialChars, initialPacks) {
 
         if (domElements['print-dashboard-btn-new']) {
             domElements['print-dashboard-btn-new'].addEventListener('click', async () => {
-                showToastNotification('Generando PDF artístico...', 'info', 6000);
+                showToastNotification('Creating stylish PDF...', 'info', 6000);
 
                 if (typeof window.jspdf === 'undefined' || typeof window.jspdf.jsPDF === 'undefined') {
-                    showToastNotification("Error: La librería jsPDF no está cargada.", 'error');
+                    showToastNotification("Error: jsPDF library not loaded.", 'error');
                     return;
                 }
 
@@ -1338,7 +1337,7 @@ function initializeApp(initialChars, initialPacks) {
                 try { doc.setFont('PlayfairDisplay-Bold', 'bold'); } catch (e) { doc.setFont('Helvetica', 'bold'); }
                 doc.setFontSize(20);
                 doc.setTextColor(colors.light_gold);
-                doc.text("Panel Detectivesco", page.width / 2, margin + 8, { align: 'center' });
+                doc.text("Detective Panel", page.width / 2, margin + 8, { align: 'center' });
 
                 doc.setFont('Helvetica', 'italic');
                 doc.setFontSize(8);
@@ -1365,8 +1364,8 @@ function initializeApp(initialChars, initialPacks) {
                 }
 
                 yPos = drawInfoLine(yPos, "Nº de Sospechosos:", String(totalCards));
-                if (hostName) yPos = drawInfoLine(yPos, "Anfitrión:", hostName);
-                if (honoreeNames && honoreeNames.length > 0) yPos = drawInfoLine(yPos, "Homenajeado/a(s):", honoreeNames.join(', '));
+                if (hostName) yPos = drawInfoLine(yPos, "Host:", hostName);
+                if (honoreeNames && honoreeNames.length > 0) yPos = drawInfoLine(yPos, "Honoree(s):", honoreeNames.join(', '));
 
                 yPos += 3;
                 doc.setDrawColor(colors.light_gold);
@@ -1392,7 +1391,7 @@ function initializeApp(initialChars, initialPacks) {
                     doc.setDrawColor(colors.light_gold);
                     doc.setLineWidth(0.2);
                     doc.line(cardX + 4, cardY + 10.5, cardX + card.width - 4, cardY + 10.5);
-                    const playerName = assignedPlayerMap.get(char.name) || 'S/A';
+                    const playerName = assignedPlayerMap.get(char.name) || 'N/A';
                     const cleanPlayerName = playerName.replace(/🎩|🌟/g, '').trim();
                     try { doc.setFont('Lora', 'bold'); } catch(e) { doc.setFont('Helvetica', 'bold'); }
                     doc.setFontSize(12);
@@ -1406,12 +1405,12 @@ function initializeApp(initialChars, initialPacks) {
                 const pdfFile = new File([pdfBlob], pdfName, { type: "application/pdf" });
 
                 try {
-                        showToastNotification('Enviando panel por email...', 'info');
+                        showToastNotification('Sending panel via email...', 'info');
                         const beautifulHTML = generateBeautifulEmailHTML(sortedCharacters, formattedDateForFilename, hostName, honoreeNames, totalCards, assignedPlayerMap);
 
                         const webhookData = {
                             to: hostEmail,
-                            subject: `Panel Detectivesco - ${formattedDateForFilename}`,
+                            subject: `Detective Panel - ${formattedDateForFilename}`,
                             data: {
                                 event: {
                                     date: formattedDateForFilename,
@@ -1422,7 +1421,7 @@ function initializeApp(initialChars, initialPacks) {
                                 },
                                 assignments: sortedCharacters.map(char => ({
                                     character: char.name,
-                                    player: assignedPlayerMap.get(char.name) || 'Sin asignar',
+                                    player: assignedPlayerMap.get(char.name) || 'Unassigned',
                                     personality: getGenderedInterpretationText(char.interpretationLevel, char.gender).toUpperCase()
                                 })),
                                 emailHTML: beautifulHTML
@@ -1437,23 +1436,23 @@ function initializeApp(initialChars, initialPacks) {
                         });
 
                         if (response.ok) {
-                            showToastNotification('✅ Panel enviado a tu email exitosamente', 'success', 4000);
+                            showToastNotification('✅ Panel successfully sent to your email', 'success', 4000);
                         } else {
                             throw new Error(`Error del servidor: ${response.status}`);
                         }
                 } catch (error) {
                     console.error('Error enviando webhook:', error);
-                    showToastNotification('Error al enviar por email, pero puedes descargar el PDF', 'error', 5000);
+                    showToastNotification('Error sending email, but you can download the PDF', 'error', 5000);
                 }
 
-                showToastNotification('PDF generado correctamente', 'success', 3000);
+                showToastNotification('PDF generated successfully', 'success', 3000);
 
                 if (!isDesktop() && navigator.share && navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
                     try {
-                        await navigator.share({ files: [pdfFile], title: 'Panel Detectivesco - Intriga', text: 'Aquí está el panel de asignaciones del juego de intriga.' });
+                        await navigator.share({ files: [pdfFile], title: 'Detective Panel - Mystery', text: 'Here is the assignment panel for the mystery game.' });
                     } catch (error) {
                         if (error.name !== 'AbortError') {
-                            showToastNotification('Error al compartir. Iniciando descarga...', 'error');
+                            showToastNotification('Share failed. Starting download...', 'error');
                             doc.save(pdfName);
                         }
                     }
@@ -1471,7 +1470,7 @@ function initializeApp(initialChars, initialPacks) {
             const coffinIconSpan = coffinIconContainer.querySelector('.coffin-icon');
             if (coffinIconSpan) {
                 coffinIconSpan.style.cursor = 'pointer';
-                coffinIconSpan.setAttribute('title', 'Ver detalles del informe');
+                coffinIconSpan.setAttribute('title', 'See report details');
 
                 coffinIconSpan.addEventListener('click', () => {
                     if (initialReportTargetElement) {
@@ -1701,13 +1700,12 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
         let baseWord;
 
         switch (firstLetter) {
-            case "E": baseWord = "Extrovertid"; break;
-            case "I": baseWord = "Introvertid"; break;
-            case "N": baseWord = "Camaleónic"; break;
-            default:  return "Indefinido";
+            case "E": baseWord = "Extrovert"; break;
+            case "I": baseWord = "Introvert"; break;
+            case "N": baseWord = "Chameleon"; break;
+            default:  return "Undefined";
         }
-        const suffix = (gender && gender.toUpperCase() === "F") ? "a" : "o";
-        return baseWord + suffix;
+        return baseWord;
     }
 
     const generationDate = new Date();
@@ -1721,16 +1719,16 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
     };
     const formattedGenerationDateTime = generationDate.toLocaleDateString('es-ES', options);
 
-    let deviceType = "un ordenador";
+    let deviceType = "a computer";
     const userAgent = navigator.userAgent;
     if (/iPhone|iPad|iPod/.test(userAgent)) {
-        deviceType = "un iPhone/iPad";
+        deviceType = "an iPhone/iPad";
     } else if (/Android/.test(userAgent)) {
-        deviceType = "un dispositivo Android";
+        deviceType = "an Android device";
     } else if (/Mobile/.test(userAgent)) {
-        deviceType = "un dispositivo móvil";
+        deviceType = "a mobile device";
     }
-    const generationInfoLine = `Este panel fue generado el ${formattedGenerationDateTime} desde ${deviceType}.`;
+    const generationInfoLine = `This panel was generated on ${formattedGenerationDateTime} from ${deviceType}.`;
 
     let characterCardsHtml = '';
     for (let i = 0; i < sortedCharacters.length; i += 2) {
@@ -1762,11 +1760,11 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                     
                     <div style="color: #f5e8d5; font-size: 15px; line-height: 1.5;">
                         <p style="margin: 5px 0;">
-                            <strong style="color: #c0a062;">👤 Jugador:</strong> 
-                            <span style="font-size: 16px;">${(assignedPlayerMap.get(char1.name) || 'Sin asignar').replace(/🎩|🌟/g, '').trim()}${assignedPlayerMap.get(char1.name)?.includes('🎩') ? ' (Anfitrión)' : assignedPlayerMap.get(char1.name)?.includes('🌟') ? ' (Homenajeado)' : ''}</span>
+                            <strong style="color: #c0a062;">👤 Player:</strong>
+                                <span style="font-size: 16px;">${(assignedPlayerMap.get(char1.name) || 'Unassigned').replace(/🎩|🌟/g, '').trim()}${assignedPlayerMap.get(char1.name)?.includes('🎩') ? ' (Host)' : assignedPlayerMap.get(char1.name)?.includes('🌟') ? ' (Honoree)' : ''}</span>
                         </p>
                         <p style="margin: 5px 0;">
-                            <strong style="color: #c0a062;">🎭 Personalidad:</strong> 
+                            <strong style="color: #c0a062;">🎭 Personality:</strong>
                             <span class="personality-pill" style="
                                 background: #c0a062;
                                 color: #1a1a1a;
@@ -1811,11 +1809,11 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                         
                         <div style="color: #f5e8d5; font-size: 15px; line-height: 1.5;">
                             <p style="margin: 5px 0;">
-                                <strong style="color: #c0a062;">👤 Jugador:</strong> 
-                                <span style="font-size: 16px;">${(assignedPlayerMap.get(char2.name) || 'Sin asignar').replace(/🎩|🌟/g, '').trim()}${assignedPlayerMap.get(char2.name)?.includes('🎩') ? ' (Anfitrión)' : assignedPlayerMap.get(char2.name)?.includes('🌟') ? ' (Homenajeado)' : ''}</span>
+                                <strong style="color: #c0a062;">👤 Player:</strong>
+                                <span style="font-size: 16px;">${(assignedPlayerMap.get(char2.name) || 'Unassigned').replace(/🎩|🌟/g, '').trim()}${assignedPlayerMap.get(char2.name)?.includes('🎩') ? ' (Host)' : assignedPlayerMap.get(char2.name)?.includes('🌟') ? ' (Honoree)' : ''}</span>
                             </p>
                             <p style="margin: 5px 0;">
-                                <strong style="color: #c0a062;">🎭 Personalidad:</strong> 
+                                <strong style="color: #c0a062;">🎭 Personality:</strong>
                                 <span class="personality-pill" style="
                                     background: #c0a062;
                                     color: #1a1a1a;
@@ -1894,12 +1892,12 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="section-box" style="background-color: #2a2a2a; margin: 0; padding: 25px; border-radius: 10px; border: 1px solid #c0a062; text-align: center;">
                                     <tr>
                                         <td style="text-align: center;">
-                                            <h2 class="title-text" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #e8d8b0; font-size: 24px; margin: 0 0 20px 0;">⚰️ Detalles del Caso ⚰️</h2>
+                                            <h2 class="title-text" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: #e8d8b0; font-size: 24px; margin: 0 0 20px 0;">⚰️ Case Details ⚰️</h2>
                                             <div style="display: inline-block; text-align: left; font-size: 16px; line-height: 1.8;">
-                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">📅 Fecha del evento:</strong> <span style="color: #f5e8d5; font-size: 18px;">${formattedDate}</span></p>
-                                                ${hostName ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🎩 Anfitrión:</strong> <span style="color: #f5e8d5; font-size: 18px;">${hostName}</span></p>` : ''}
-                                                ${honoreeNames.length > 0 ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🌟 Homenajeado(s):</strong> <span style="color: #f5e8d5; font-size: 18px;">${honoreeNames.join(', ')}</span></p>` : ''}
-                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">👥 Total de sospechosos:</strong> <span style="color: #f5e8d5; font-size: 18px;">${totalCards}</span></p>
+                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">📅 Event date:</strong> <span style="color: #f5e8d5; font-size: 18px;">${formattedDate}</span></p>
+                                                ${hostName ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🎩 Host:</strong> <span style="color: #f5e8d5; font-size: 18px;">${hostName}</span></p>` : ''}
+                                                ${honoreeNames.length > 0 ? `<p style="margin: 8px 0;"><strong style="color: #c0a062;">🌟 Honoree(s):</strong> <span style="color: #f5e8d5; font-size: 18px;">${honoreeNames.join(', ')}</span></p>` : ''}
+                                                <p style="margin: 8px 0;"><strong style="color: #c0a062;">👥 Total suspects:</strong> <span style="color: #f5e8d5; font-size: 18px;">${totalCards}</span></p>
                                             </div>
                                         </td>
                                     </tr>
@@ -1923,9 +1921,9 @@ function generateBeautifulEmailHTML(sortedCharacters, formattedDate, hostName, h
                         </tr>
                         <tr>
                             <td class="header-bg" style="background: linear-gradient(135deg, #8c703c 0%, #c0a062 50%, #8c703c 100%); padding: 20px 20px 30px 20px; text-align: center; margin-top: 0px; border-top: 1px solid #8c703c;">
-                                <p style="color: #1a1a1a; font-size: 14px; margin: 0 0 10px 0; font-weight: bold;">🔍 CONFIDENCIAL - NO COMPARTIR 🔍</p>
-                                <p style="color: #1a1a1a; font-size: 12px; margin: 0; opacity: 0.8;">© 2024 123 Action Barcelona - Experiencias teatrales únicas<br>
-                                Sistema de Asignación de Sospechosos v1.0<br>
+                                <p style="color: #1a1a1a; font-size: 14px; margin: 0 0 10px 0; font-weight: bold;">🔍 CONFIDENTIAL - DO NOT SHARE 🔍</p>
+                                <p style="color: #1a1a1a; font-size: 12px; margin: 0; opacity: 0.8;">© 2024 123 Action Barcelona - Unique theatrical experiences<br>
+                                Suspect Assignment System v1.0<br>
                                 <span style="font-size: 10px; color: #333333; display: block; margin-top: 5px;">${generationInfoLine}</span>
                                 </p>
                             </td>
@@ -1965,7 +1963,7 @@ function openShareMenu(trigger) {
     const charName = trigger.dataset.charname;
     const fichaLink = trigger.dataset.link;
     const characterCard = trigger.closest('.character-frame');
-    let playerName = "Invitado/a de Honor"; 
+    let playerName = "Guest of Honor";
 
     if (characterCard) {
         const assignmentInput = characterCard.querySelector('.player-assignment-select, .player-assignment-input');
@@ -1974,7 +1972,7 @@ function openShareMenu(trigger) {
         }
     }
 
-    const txt = `¡Hola ${playerName}!\n\nTu personaje para el Cluedo en vivo es:\n\n🕵️ SOSPECHOSO: ${charName}\n\n🔗 Accede a tu ficha secreta aquí: ${fichaLink}\n\n¡Prepárate para el misterio! 🤫`;
+    const txt = `Hello ${playerName}!\n\nYour live Clue character is:\n\n🕵️ SUSPECT: ${charName}\n\n🔗 Access your secret file here: ${fichaLink}\n\nGet ready for the mystery! 🤫`;
     
     const menu = document.createElement('div');
     menu.className = 'share-menu';
@@ -1983,14 +1981,14 @@ function openShareMenu(trigger) {
             <div class="share-option"><i class="fab fa-whatsapp share-menu-icon"></i><span>WhatsApp</span></div>
         </a>
         <button type="button" class="share-copy-option">
-            <div class="share-option"><i class="fas fa-copy share-menu-icon"></i><span>Copiar texto</span></div>
+            <div class="share-option"><i class="fas fa-copy share-menu-icon"></i><span>Copy text</span></div>
         </button>
         <a href="mailto:?subject=${encodeURIComponent('Tu personaje: ' + charName)}&body=${encodeURIComponent(txt)}">
             <div class="share-option"><i class="fas fa-envelope share-menu-icon"></i><span>Email</span></div>
         </a>
         <div style="border-top: 1px solid #c0a062; margin: 4px 0;"></div>
         <button type="button" class="share-print-option">
-            <div class="share-option"><i class="fas fa-print share-menu-icon"></i><span>Imprimir Invitación</span></div>
+            <div class="share-option"><i class="fas fa-print share-menu-icon"></i><span>Print Invitation</span></div>
         </button>
     `;
     
@@ -2001,7 +1999,7 @@ function openShareMenu(trigger) {
     menu.style.top = `${rect.bottom + window.scrollY + 5}px`;
 
     menu.querySelector('.share-copy-option').addEventListener('click', () => {
-        navigator.clipboard.writeText(txt).then(() => showToastNotification('Texto copiado', 'success'), () => showToastNotification('Error al copiar', 'error'));
+        navigator.clipboard.writeText(txt).then(() => showToastNotification('Text copied', 'success'), () => showToastNotification('Copy failed', 'error'));
         closeActiveShareMenu();
     });
 
@@ -2018,21 +2016,21 @@ function openShareMenu(trigger) {
 
 function printInvitation(characterLink, playerName) {
     if (!characterLink) {
-        showToastNotification('Error: No se encontró el enlace del personaje.', 'error');
+        showToastNotification('Error: Character link not found.', 'error');
         return;
     }
 
-    const finalPlayerName = playerName && playerName !== "[Nombre del Jugador]" ? playerName : "Invitado/a";
+    const finalPlayerName = playerName && playerName !== "[Nombre del Jugador]" ? playerName : "Guest";
     const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(characterLink)}`;
     // *** CAMBIO: RUTA DE IMAGEN CORREGIDA ***
     const sealImageUrl = 'Fotos_Personajes/sello-logo.png';
 
     const invitationHtml = `
         <!DOCTYPE html>
-        <html lang="es">
+        <html lang="en">
         <head>
           <meta charset="UTF-8">
-          <title>Invitación Confidencial para ${finalPlayerName}</title>
+          <title>Confidential Invitation for ${finalPlayerName}</title>
           <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Crimson+Text:wght@400;600;700&family=Alex+Brush&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
           <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2065,15 +2063,15 @@ function printInvitation(characterLink, playerName) {
             <div class="decorative-frame"></div>
             <div class="inner-frame"></div>
             <div class="content-wrapper">
-                <h1>Una invitación para<br><strong>${finalPlayerName}</strong></h1>
-                <p class="subtitle">A la lectura del testamento de Mr. Collins</p>
-                <p class="body-text">Has sido seleccionado/a para ayudar a resolver la<br><strong>misteriosa muerte de Mr. Collins.</strong></p>
-                <p class="instruction">Escanea este código para acceder a tu expediente:</p>
+                <h1>An invitation for<br><strong>${finalPlayerName}</strong></h1>
+                <p class="subtitle">For the reading of Mr. Collins's will</p>
+                <p class="body-text">You have been chosen to help solve the<br><strong>mysterious death of Mr. Collins.</strong></p>
+                <p class="instruction">Scan this code to access your dossier:</p>
                 <div class="visual-container">
-                    <div class="qr-container"><img src="${qrApiUrl}" alt="Código QR"></div>
-                    <div class="seal-container"><img src="${sealImageUrl}" alt="Sello"></div>
+                    <div class="qr-container"><img src="${qrApiUrl}" alt="QR code"></div>
+                    <div class="seal-container"><img src="${sealImageUrl}" alt="Seal"></div>
                 </div>
-                <p class="footer-note">Esta ficha es <strong>personal e intransferible</strong>.<br>¡No la compartas con nadie!</p>
+                <p class="footer-note">This file is <strong>personal and non-transferable</strong>.<br>Do not share it with anyone!</p>
             </div>
           </div>
           <script>
