@@ -15,7 +15,7 @@ const allCharacters_data = [
     { name: "La Vecina 5", gender: "F", interpretationLevel: "Introvertido", isSeniorFriendly: true, preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/las-vecinas/", description: "Siempre al tanto de los chismes del vecindario.", imageUrl: "Fotos_Personajes/VECINAS.webp" },
     { name: "El Gestor", gender: "M", interpretationLevel: "Extrovertido", isBirthdayFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-gestor/", description: "Maneja la fortuna familiar y conoce sus entresijos.", imageUrl: "Fotos_Personajes/GESTOR_ACCOUNTANT.webp" },
     { name: "El Hijastro", gender: "M", interpretationLevel: "Extrovertido", fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-hijastro/", description: "Un joven militar de honor muy masculino.", imageUrl: "Fotos_Personajes/HIJASTRO_STEPSON.webp" },
-    { name: "El Hermano", gender: "M", interpretationLevel: "Extrovertido", preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-hermano/", description: "Carismático director de cine que solo piensa en el arte", imageUrl: "Fotos_Personajes/HERMANO_BROTHER.webp" },
+    { name: "El Hermano", gender: "M", interpretationLevel: "Camaleonico", preferCenterImage: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-hermano/", description: "Carismático director de cine que solo piensa en el arte", imageUrl: "Fotos_Personajes/HERMANO_BROTHER.webp" },
     { name: "El Doctor", gender: "M", interpretationLevel: "Neutro", isBirthdayFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-doctor/", description: "Muy profesional aunque va de enterado", imageUrl: "Fotos_Personajes/DOCTOR.webp" },
     { name: "El Socio", gender: "M", interpretationLevel: "Introvertido", isKidFriendly: true, isSeniorFriendly: true, fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-socio/", description: "Hombre de negocios con alta autoestima", imageUrl: "Fotos_Personajes/SOCIO.webp" },
     { name: "El Cuñado", gender: "M", interpretationLevel: "Neutro", fichaLink: "https://123actionbarcelona.com/englishyes/Collins-personajes/el-cunado-roy/", description: "Excéntrico, divertido y derrochador", imageUrl: "Fotos_Personajes/BROTHER_IN_LAW.webp" },
@@ -1300,8 +1300,8 @@ function initializeApp(initialChars, initialPacks) {
                 const colors = {
                     page_bg: '#1a1a1a',
                     dark: '#e0d8cd',
-                    gold: '#d4af37',
-                    light_gold: '#c0a062',
+                    gold: '#b8860b',
+                    light_gold: '#caa75b',
                     bg: '#2a2823'
                 };
                 doc.setFillColor(colors.page_bg);
