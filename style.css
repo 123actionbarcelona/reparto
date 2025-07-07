@@ -98,7 +98,6 @@ html {
     background: url('Fotos_Personajes/fondo_victoriano.WEBP') repeat scroll;
     background-size: 300px 300px;
     background-color: #2a2520;
-    /* background-blend-mode: multiply; ← COMENTADO */
 }
 
 body {
@@ -522,7 +521,7 @@ button .fas, button .fab { margin-right: 8px; }
     transition-delay: 0s;
 }
 #toast-notification .fas { margin-right: 10px; font-size: 1.2em; }
-#toast-notification.success { background-color: var(--color-success-light); color: var(--color-success-darker); border-left-color: var(--color-success); }
+#toast-notification.success { background-color: #d4edda; color: #155724; border-left-color: #28a745; }
 :root.dark-mode #toast-notification.success { background-color: #2e4b37; color: #a7d7c5; border-left-color: var(--color-success); }
 #toast-notification.error { background-color: var(--color-danger-light); color: var(--color-danger); border-left-color: var(--color-danger); }
 :root.dark-mode #toast-notification.error { background-color: #5a2a2a; color: #f8d7da; border-left-color: var(--color-danger); }
@@ -585,7 +584,6 @@ button .fas, button .fab { margin-right: 8px; }
     color: #ffffff;
     border-color: var(--color-gold-medium);
 }
-/* ... justo después de los estilos de :root.dark-mode .honoree-choice-btn:hover ... */
 
 .honoree-choice-btn.active {
     background-color: var(--color-gold-dark);
@@ -602,24 +600,16 @@ button .fas, button .fab { margin-right: 8px; }
     border-color: var(--color-gold-light);
 }
 
-/* Separador para las secciones de Homenajeado y Nombres de Jugadores */
-
 .bloque.bloque-4,
 .bloque.bloque-6 {
     margin-top: 35px;
     padding-top: 30px;
 }
 
-/* Reduce gap after the honoree section */
 .bloque.bloque-4 {
     margin-bottom: 10px;
 }
 
-:root.dark-mode .bloque.bloque-4,
-:root.dark-mode .bloque.bloque-6 {
-}
-
-/* ... aquí empiezan los estilos de #action-buttons-section ... */
 .honoree-choice-container { display: flex; gap: 10px; }
 #action-buttons-section {
     margin-bottom: 24px;
@@ -1115,40 +1105,72 @@ button .fas, button .fab { margin-right: 8px; }
 .character-portrait-content .player-assignment-select.assigned, .character-portrait-content .player-assignment-input.assigned { border-color: var(--color-success) !important; background-color: rgba(80, 122, 92, 0.25) !important; color: #d4e9d9 !important; font-weight: bold; }
 :root.dark-mode .character-portrait-content .player-assignment-select.assigned, :root.dark-mode .character-portrait-content .player-assignment-input.assigned { background-color: rgba(var(--color-success), 0.35) !important; color: #d4e9d9 !important; }
 
-/* Botón de compartir en tarjeta */
+/* --- INICIO: NUEVOS ESTILOS PARA BOTÓN COMPARTIR/IMPRIMIR Y CORRECCIONES --- */
 .character-card-actions { margin-top: auto;  padding-top: 10px; }
-.copy-char-btn-frame {
+
+.share-button {
+    font-family: 'Special Elite', monospace;
     background: #222 !important;
-    color: var(--color-gold-light) !important;
-    font-family: var(--font-special), monospace !important;
-    font-size: 0.95em !important;
-    border: 1px solid var(--color-gold-medium) !important;
-    padding: 10px 15px !important;
-    border-radius: 6px !important;
+    color: #f2dfb3 !important;
+    border: 1px solid #e3c896 !important;
+    padding: 12px 20px !important;
+    border-radius: 5px !important;
+    cursor: pointer;
+    font-weight: bold !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    text-shadow: none !important;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3), inset 1px 1px 3px rgba(0,0,0,0.2);
-    transform: rotate(1deg);
+    gap: 8px;
+    transition: all 0.2s ease;
+    font-size: 1.1em !important;
     width: 100%;
-    text-transform: none;
-    letter-spacing: normal;
+}
+
+.share-button:hover {
+    background-color: #333 !important;
+    border-color: #f2dfb3 !important;
+}
+
+.share-menu {
+    position: absolute;
+    background: #2b2b2b;
+    border: 1px solid #e3c896;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    padding: 4px 0;
+    z-index: 2000;
+    min-width: 220px;
+}
+
+.share-menu a, .share-menu button {
+    box-sizing: border-box; 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 18px;
+    background: none;
+    border: none;
+    text-align: left;
+    text-decoration: none;
+    color: #f2dfb3;
+    font-family: 'Lora', serif;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    font-weight: 600;
 }
-.copy-char-btn-frame:hover {
-    background: #333 !important;
-    border-color: var(--color-gold-light) !important;
-    transform: rotate(0deg) scale(1.02);
-    box-shadow: 3px 3px 7px rgba(0,0,0,0.4), inset 1px 1px 4px rgba(0,0,0,0.3);
+
+.share-menu a:hover, .share-menu button:hover {
+    background: rgba(255,255,255,0.1);
 }
-.copy-char-btn-frame:active {
-    transform: rotate(0deg) scale(1);
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.35);
+
+.share-menu-icon {
+    color: #e3c896;
+    width: 20px;
+    text-align: center;
+    font-size: 1.1em;
 }
-.copy-char-btn-frame img { border-radius: 50%; width: 22px; height: 22px; }
 
 .boton-whatsapp {
     background: #222;
@@ -1173,61 +1195,13 @@ button .fas, button .fab { margin-right: 8px; }
     transform: scale(1.02);
     box-shadow: 3px 3px 7px rgba(0,0,0,0.4), inset 1px 1px 4px rgba(0,0,0,0.3);
 }
-.boton-whatsapp:active {
-    transform: scale(1);
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.35);
-}
 .boton-whatsapp img {
     border-radius: 50%;
     width: 22px;
     height: 22px;
 }
+/* --- FIN DE CORRECCIONES Y NUEVOS ESTILOS --- */
 
-.share-menu {
-    position: absolute;
-    background: var(--color-content-bg);
-    border: 1px solid var(--color-gold-medium);
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    padding: 4px 0;
-    z-index: 2000;
-    min-width: 180px;
-}
-.share-menu a,
-.share-menu button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 15px;
-    background: none;
-    border: none;
-    text-align: left;
-    text-decoration: none;
-    color: var(--color-text-dark);
-    font-family: var(--font-body), serif;
-    cursor: pointer;
-}
-.share-menu a:hover,
-.share-menu button:hover {
-    background: rgba(0,0,0,0.05);
-}
-:root.dark-mode .share-menu a,
-:root.dark-mode .share-menu button {
-    color: var(--color-gold-light);
-}
-:root.dark-mode .share-menu a:hover,
-:root.dark-mode .share-menu button:hover {
-    background: rgba(255,255,255,0.1);
-}
-.share-menu-icon {
-    color: var(--color-gold-dark);
-    width: 20px;
-    text-align: center;
-}
-:root.dark-mode .share-menu-icon {
-    color: var(--color-gold-medium);
-}
 
 /* ============================================= */
 /* Estilos Popovers de Información               */
@@ -1492,11 +1466,10 @@ button .fas, button .fab { margin-right: 8px; }
         inset 0 0 40px rgba(0,0,0,0.3),
         inset 0 0 100px rgba(140, 112, 60, 0.1);
 
-    /* AJUSTE CLAVE: Oculto por defecto y listo para la animación */
     opacity: 0;
     pointer-events: none;
     transform: translateY(-50px) rotate(-5deg) scale(0.8);
-    transition: opacity 0.3s ease; /* Transición suave para ocultar */
+    transition: opacity 0.3s ease; 
 }
 
 #completion-banner.visible {
@@ -1677,7 +1650,6 @@ button .fas, button .fab { margin-right: 8px; }
 
 .action-primary {
   font-family: var(--font-special);
-  /* 1. Fondo dorado usando las variables de color de tu app */
   background: linear-gradient(145deg, var(--color-gold-dark), #a1804e);
   border: 2px solid var(--color-gold-dark);
   color: var(--color-gold-pale);
@@ -1688,8 +1660,8 @@ button .fas, button .fab { margin-right: 8px; }
   border-radius: 5px 20px 5px 20px;
   box-shadow: 2px 2px 4px rgba(0,0,0,0.2), inset 0px 1px 2px rgba(255,255,255,0.1);
   cursor: pointer;
-  position: relative; /* Necesario para el efecto de brillo */
-  overflow: hidden; /* Oculta el brillo fuera del botón */
+  position: relative;
+  overflow: hidden;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
@@ -1704,7 +1676,6 @@ button .fas, button .fab { margin-right: 8px; }
   box-shadow: 3px 3px 6px rgba(0,0,0,0.25), inset 0px 1px 2px rgba(255,255,255,0.05);
 }
 
-/* 2. Efecto de brillo (shine) que se activa al pasar el ratón */
 .action-primary::before {
     content: '';
     position: absolute;
@@ -1712,14 +1683,13 @@ button .fas, button .fab { margin-right: 8px; }
     left: -150%;
     width: 75%;
     height: 100%;
-    /* El brillo es un gradiente blanco semitransparente */
     background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-    transform: skewX(-25deg); /* Inclinamos el brillo */
+    transform: skewX(-25deg);
     transition: left 0.7s ease-in-out;
 }
 
 .action-primary:hover::before {
-    left: 150%; /* Movemos el brillo de un lado a otro */
+    left: 150%;
 }
 
 
@@ -1762,8 +1732,8 @@ button .fas, button .fab { margin-right: 8px; }
     position: absolute;
     top: 10px;
     right: -30px;
-    background: var(--color-gold-dark); /* CAMBIO: Fondo dorado oscuro */
-    color: var(--color-gold-pale);      /* CAMBIO: Texto dorado pálido para contraste */
+    background: var(--color-gold-dark);
+    color: var(--color-gold-pale);
     padding: 5px 40px;
     font-family: var(--font-special);
     font-size: 0.7em;
@@ -2014,9 +1984,7 @@ button .fas, button .fab { margin-right: 8px; }
         font-size: 0.8em;
     }
     #completion-message {
-        /* Reduce el tamaño del texto para que quepa en pantallas pequeñas */
         font-size: 0.9em;
-        /* Ajustes para evitar que el texto se corte */
         animation: none;
         white-space: normal;
         overflow: visible;
@@ -2051,19 +2019,16 @@ button .fas, button .fab { margin-right: 8px; }
 /* === MEJORAS MODO NOCHE PARA EL INFORME FINAL === */
 /* ============================================= */
 
-/* Cambia el fondo blanco del papel por un tono oscuro temático */
 :root.dark-mode .case-details {
-    background: #25231e; /* Un tono de papel antiguo oscuro */
+    background: #25231e;
     border-color: var(--color-gold-dark);
     box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 0 15px rgba(0,0,0,0.3);
 }
 
-/* Asegura que el texto de las etiquetas sea claro y legible */
 :root.dark-mode .case-details .detail-label {
     color: var(--color-text-medium);
 }
 
-/* Asegura que los valores (nombres, fechas, etc.) también sean claros */
 :root.dark-mode .case-details .detail-value {
     color: var(--color-text-dark);
 }
