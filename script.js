@@ -1773,11 +1773,19 @@ function openShareMenu(trigger) {
     const menu = document.createElement('div');
     menu.className = 'share-menu';
     menu.innerHTML = `
-        <a href="https://wa.me/?text=${encodeURIComponent(txt)}" target="_blank"><i class="fab fa-whatsapp share-menu-icon"></i>WhatsApp</a>
-        <button type="button" class="share-copy-option"><i class="fas fa-copy share-menu-icon"></i>Copiar texto</button>
-        <a href="mailto:?subject=${encodeURIComponent('Tu personaje: ' + charName)}&body=${encodeURIComponent(txt)}"><i class="fas fa-envelope share-menu-icon"></i>Email</a>
+        <a href="https://wa.me/?text=${encodeURIComponent(txt)}" target="_blank">
+            <div class="share-option"><i class="fab fa-whatsapp share-menu-icon"></i><span>WhatsApp</span></div>
+        </a>
+        <button type="button" class="share-copy-option">
+            <div class="share-option"><i class="fas fa-copy share-menu-icon"></i><span>Copiar texto</span></div>
+        </button>
+        <a href="mailto:?subject=${encodeURIComponent('Tu personaje: ' + charName)}&body=${encodeURIComponent(txt)}">
+            <div class="share-option"><i class="fas fa-envelope share-menu-icon"></i><span>Email</span></div>
+        </a>
         <div style="border-top: 1px solid #c0a062; margin: 4px 0;"></div>
-        <button type="button" class="share-print-option"><i class="fas fa-print share-menu-icon"></i>Imprimir Invitación</button>
+        <button type="button" class="share-print-option">
+            <div class="share-option"><i class="fas fa-print share-menu-icon"></i><span>Imprimir Invitación</span></div>
+        </button>
     `;
     
     document.body.appendChild(menu);
