@@ -1297,7 +1297,12 @@ function initializeApp(initialChars, initialPacks) {
                     width: (page.width - (margin * 2) - (columnMargin * (numColumns - 1))) / numColumns,
                     height: 25
                 };
-                const colors = { dark: '#2c1f1b', gold: '#8c703c', light_gold: '#c0a062', bg: '#faf3e0' };
+                const colors = {
+                    dark: '#f5f5f5',
+                    gold: '#d4af37',
+                    light_gold: '#f0d68a',
+                    bg: '#1a1a1a'
+                };
 
                 const hostPlayerName = hostName ? hostName + " 🎩" : null;
                 const honoreePlayerNames = honoreeNames.map(name => name + " 🌟");
@@ -1323,13 +1328,13 @@ function initializeApp(initialChars, initialPacks) {
                 doc.setDrawColor(colors.gold);
                 doc.setLineWidth(1);
                 doc.rect(margin / 2, margin / 2, page.width - margin, page.height - margin);
-                doc.setDrawColor(colors.dark);
+                doc.setDrawColor(colors.light_gold);
                 doc.setLineWidth(0.2);
                 doc.rect((margin / 2) + 1.5, (margin / 2) + 1.5, page.width - margin - 3, page.height - margin - 3);
 
                 try { doc.setFont('PlayfairDisplay-Bold', 'bold'); } catch (e) { doc.setFont('Helvetica', 'bold'); }
                 doc.setFontSize(20);
-                doc.setTextColor(colors.dark);
+                doc.setTextColor(colors.gold);
                 doc.text("Panel Detectivesco", page.width / 2, margin + 8, { align: 'center' });
 
                 doc.setFont('Helvetica', 'italic');
