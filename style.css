@@ -1151,7 +1151,7 @@ button .fas, button .fab { margin-right: 8px; }
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     width: 100%;
     padding: 12px 18px;
     background: none;
@@ -1184,7 +1184,7 @@ button .fas, button .fab { margin-right: 8px; }
 
 .share-menu-icon {
     color: #e3c896;
-    width: 20px;
+    width: 1em;
     text-align: center;
     font-size: 1.1em;
 }
